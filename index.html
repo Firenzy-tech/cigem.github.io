@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cigem | Certificación de Esmeraldas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --verde-oscuro: #012615;
+            --verde-medio: #025930;
+            --dorado: #c7b299;
+            --gris-claro: #d8dad9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--gris-claro);
+            color: var(--verde-oscuro);
+        }
+
+        header {
+            background-color: var(--verde-oscuro);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header h1 {
+            font-weight: 700;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            color: var(--dorado);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--gris-claro);
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--dorado);
+        }
+
+        .hero {
+            background: linear-gradient(rgba(1, 38, 21, 0.6), rgba(1, 38, 21, 0.8)), 
+                        url('https://images.unsplash.com/photo-1590080875830-dc9e0d7a6a5d?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            color: white;
+            text-align: center;
+            padding: 120px 20px;
+        }
+
+        .hero h2 {
+            font-size: 2.8rem;
+            color: var(--dorado);
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .btn {
+            background-color: var(--dorado);
+            color: var(--verde-oscuro);
+            padding: 12px 30px;
+            border: none;
+            border-radius: 30px;
+            font-weight: 700;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--verde-medio);
+            color: white;
+        }
+
+        section {
+            padding: 60px 50px;
+            text-align: center;
+        }
+
+        .section-title {
+            color: var(--verde-oscuro);
+            font-size: 2rem;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 80px;
+            height: 3px;
+            background-color: var(--dorado);
+            display: block;
+            margin: 10px auto 0;
+        }
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 30px;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+        }
+
+        .card h3 {
+            color: var(--verde-medio);
+            margin-bottom: 15px;
+        }
+
+        .about {
+            background-color: var(--verde-oscuro);
+            color: var(--gris-claro);
+            padding: 80px 50px;
+        }
+
+        .about p {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        footer {
+            background-color: var(--verde-medio);
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>CIGEM</h1>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="inicio">
+        <h2>Certificación de Esmeraldas y Piedras Preciosas</h2>
+        <p>En Cigem certificamos la autenticidad y calidad de cada gema, con especialización en esmeraldas colombianas, ofreciendo confianza y valor a cada pieza.</p>
+        <button class="btn">Solicitar Certificación</button>
+    </section>
+
+    <section id="servicios">
+        <h2 class="section-title">Nuestros Servicios</h2>
+        <div class="services">
+            <div class="card">
+                <h3>Certificación de Esmeraldas</h3>
+                <p>Análisis gemológico profesional con tecnología avanzada para determinar autenticidad, pureza y origen.</p>
+            </div>
+            <div class="card">
+                <h3>Valoración de Piedras Preciosas</h3>
+                <p>Determinamos el valor real de su gema considerando color, claridad, corte y carataje.</p>
+            </div>
+            <div class="card">
+                <h3>Informe Gemológico Oficial</h3>
+                <p>Emitimos certificados nacionales de autenticidad reconocidos por joyerías y coleccionistas.</p>
+            </div>
+            <div class="card">
+                <h3>Asesoría Personalizada</h3>
+                <p>Orientación profesional para inversionistas, diseñadores de joyas y comerciantes de gemas.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="nosotros">
+        <h2 class="section-title" style="color: var(--dorado);">Sobre Cigem</h2>
+        <p>
+            CIGEM nace con la misión de preservar la transparencia y la excelencia en el mercado de piedras preciosas. 
+            Nuestro equipo de gemólogos certificados garantiza que cada análisis sea riguroso, imparcial y respaldado por los más altos estándares nacionales.
+            Especializados en esmeraldas colombianas, combinamos ciencia, tradición y ética para ofrecer confianza en cada certificación.
+        </p>
+    </section>
+
+    <footer id="contacto">
+        <p>© 2025 CIGEM - Centro nacional de Gemología | Todos los derechos reservados</p>
+    </footer>
+
+    <script>
+        // Pequeña animación suave al hacer clic en los enlaces del menú
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
