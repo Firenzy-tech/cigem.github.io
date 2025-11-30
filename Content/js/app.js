@@ -9,14 +9,4 @@
         });
 
 
-        //banner
-          const images = [
-    "Content/img/banner1.png",
-    "Content/img/banner2.png",
-    "Content/img/banner3.png"
-];
-let index = 0;
-setInterval(() => {
-    document.querySelector(".banner").style.backgroundImage = `url('${images[index]}')`;
-    index = (index + 1) % images.length;
-}, 4000);
+      

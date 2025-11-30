@@ -1,121 +1,140 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cigem | Certificación de Esmeraldas</title>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="Content/css/styles.css">
-    <script src="Content/js/app.js"></script>
-    
-</head>
-    
-<body>
-    <header>
-        <img src="Content/img/LOGO.png" alt="Descripción de la imagen" width="150">
-        <nav>
-            <ul>
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#servicios">Servicios</a></li>
-                <li><a href="#nosotros">Nosotros</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-                <li><a href="Card/Card.html">Cigem Colombia</a></li>
-                <li><a href="Pages/QRLector.html">Lector QR</a></li>
-            </ul>
-        </nav>
-        <!-- <script src="Content/js/banner-loader.js">
 
-            
-        </script> -->
-        <script>
-            fetch("/otherpages/banner.html")
-        .then(response => response.text())
-        .then(html => {
-            document.getElementById("inicio").innerHTML = html;
-        })
-        .catch(error => console.error("Error cargando el banner:", error));
-        </script>
-        
-        
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="Content/css/styles.css" />
+  </head>
+
+  <body>
+    <header>
+      <img src="Content/img/LOGO.png" alt="Logo Cigem" width="150" />
+
+      <nav>
+        <ul>
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+          <li><a href="Card/Card.html">Cigem Colombia</a></li>
+        </ul>
+      </nav>
     </header>
 
-    
-
-       
     <section class="hero" id="inicio">
-        <div class="hero-content">
-          
-            <h1>Centro de Investigación Gemológico de Medellín</h1>
-            <p class="hero-subtitle">Certificación de Esmeraldas con Excelencia y Transparencia</p>
-            <a href="#servicios" class="cta-button">Conoce Nuestros Servicios</a>
+      <div class="carousel">
+        <div class="carousel-inner">
+          <img src="Content/img/banner1.png" alt="Banner 1" class="carousel-slide active" />
+          <img src="Content/img/banner2.png" alt="Banner 2" class="carousel-slide" />
+          <img src="Content/img/banner3.png" alt="Banner 3" class="carousel-slide" />
         </div>
+        <button class="carousel-control prev" onclick="changeSlide(-1)">&#10094;</button>
+        <button class="carousel-control next" onclick="changeSlide(1)">&#10095;</button>
+      </div>
+
+      <div class="hero-content">
+        <h1>Centro de Investigación Gemológico de Medellín</h1>
+        <p class="hero-subtitle">
+          Certificación de Esmeraldas con Excelencia y Transparencia
+        </p>
+        <a href="#servicios" class="cta-button">Conoce Nuestros Servicios</a>
+      </div>
     </section>
 
     <section id="servicios">
-        <h2 class="section-title">Nuestros Servicios</h2>
-        <div class="services">
-            <div class="card">
-                <img src="Content/img/Servicios2.jpg" alt="Emeralds" class="card-image">
-                <h3>Análisis de Piezas Montadas y Desmontadas</h3>
-                <p>Utilizamos microscopía avanzada, espectroscopía y otras técnicas no destructivas para determinar la naturaleza de la gema (natural, sintética, tratada), su origen (cuando es posible), y sus características de calidad (color, claridad, corte, peso). Se entrega un reporte detallado con todos los hallazgos.</p>
-            </div>
-            <div class="card">
-                  <img src="Content/img/Servicios3.jpeg" alt="Emeralds" class="card-image">
-                <h3>Tasaciones y Valoraciones</h3>
-                <p>Nuestros gemólogos tasadores certificados realizan valoraciones basadas en análisis exhaustivos y conocimiento actual del mercado. Ofrecemos tasaciones para diversos propósitos: seguros, herencias, ventas, etc. Cada tasación se documenta con un informe completo.</p>
-            </div>
-            <div class="card">
-                <img src="Content/img/Servicios1.jpeg" alt="Emeralds" class="card-image">
-                <h3>Certificación de Origen y Tratamientos</h3>
-                <p>Mediante análisis de inclusiones, composición química y otras técnicas avanzadas, podemos ofrecer opiniones sobre el origen geográfico de ciertas gemas (ej. zafiros, rubíes, esmeraldas) y detectar la presencia de tratamientos comunes o sofisticados que puedan afectar su valor y autenticidad.</p>
-            </div>
+      <h2 class="section-title">Nuestros Servicios</h2>
 
-
-            
-<div class="card">
-    <img src="Content/img/Servicios4.jpeg" alt="Emeralds" class="card-image">
-    <h3>Servicios para Profesionales de la Joyería</h3>
-    <p>
-        Ofrecemos servicios de clasificación de lotes de gemas, verificación rápida, 
-        consultas especializadas y programas de control de calidad. Entendemos las 
-        necesidades del profesional y ofrecemos tiempos de respuesta ágiles y 
-        confidencialidad absoluta.
-    </p>
-</div>
+      <div class="services">
+        <div class="card">
+          <img src="Content/img/Servicios2.jpg" alt="Análisis de piezas" class="card-image" />
+          <h3>Análisis de Piezas Montadas y Desmontadas</h3>
+          <p>
+            Utilizamos técnicas avanzadas para determinar naturaleza, origen y
+            características de calidad. Entregamos un reporte detallado.
+          </p>
         </div>
+
+        <div class="card">
+          <img src="Content/img/Servicios3.jpeg" alt="Tasaciones" class="card-image" />
+          <h3>Tasaciones y Valoraciones</h3>
+          <p>
+            Tasaciones profesionales basadas en análisis exhaustivos y mercado
+            actual. Ideal para seguros, ventas, herencias y más.
+          </p>
+        </div>
+
+        <div class="card">
+          <img src="Content/img/Servicios1.jpeg" alt="Certificación" class="card-image" />
+          <h3>Certificación de Origen y Tratamientos</h3>
+          <p>
+            Análisis para identificar origen de gemas y detección de tratamientos
+            que afectan valor y autenticidad.
+          </p>
+        </div>
+
+        <div class="card">
+          <img src="Content/img/Servicios4.jpeg" alt="Servicios profesionales" class="card-image" />
+          <h3>Servicios para Profesionales de la Joyería</h3>
+          <p>
+            Clasificación, verificación rápida, consultas y programas de control
+            de calidad con tiempos ágiles y confidencialidad.
+          </p>
+        </div>
+      </div>
     </section>
 
     <section class="about" id="nosotros">
-        <h2 class="section-title" style="color: var(--dorado);">Sobre Cigem</h2>
-        <p>
-            CIGEM nace con la misión de preservar la transparencia y la excelencia en el mercado de piedras preciosas. 
-            Nuestro equipo de gemólogos certificados garantiza que cada análisis sea riguroso, imparcial y respaldado por los más altos estándares nacionales.
-            Especializados en esmeraldas colombianas, combinamos ciencia, tradición y ética para ofrecer confianza en cada certificación.
-        </p>
+      <h2 class="section-title" style="color: var(--dorado)">Sobre Cigem</h2>
+      <p>
+        CIGEM preserva la transparencia y excelencia en el mercado de piedras
+        preciosas. Con enfoque en esmeraldas colombianas, combinamos ciencia,
+        tradición y ética para garantizar confianza en cada análisis.
+      </p>
     </section>
 
-<footer id="contacto">
-    <p>© 2025 CIGEM - Centro nacional de Gemología +57 3502127792 | Todos los derechos reservados</p>
+    <footer id="contacto">
+      <p>
+        © 2025 CIGEM - Centro Nacional de Gemología | +57 3502127792 | Todos los derechos reservados
+      </p>
 
-    <div class="social-links">
+      <div class="social-links">
         <!-- WhatsApp -->
-        <a href="wa.link/o998xn" target="_blank" aria-label="WhatsApp">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="#25D366">
-                <path d="M12.04 2C6.58 2 2.18 6.4 2.18 11.86c0 2.09.55 4.02 1.61 5.75L2 22l4.51-1.74c1.65.9 3.49 1.37 5.53 1.37 5.46 0 9.86-4.4 9.86-9.86S17.5 2 12.04 2zm0 17.64c-1.73 0-3.33-.46-4.74-1.33l-.34-.2-2.68 1.03.96-2.61-.22-.34a8 8 0 1112.99-9.34 8 8 0 01-5.97 12.79zm4.52-6.02c-.25-.12-1.47-.72-1.7-.8-.23-.08-.4-.12-.57.12-.17.25-.65.8-.8.96-.15.17-.3.18-.55.06-.25-.12-1.06-.39-2.02-1.25-.75-.67-1.25-1.49-1.4-1.74-.15-.25-.02-.39.11-.51.12-.12.25-.3.37-.45.12-.15.17-.25.25-.42.08-.17.04-.32-.02-.45-.06-.12-.57-1.37-.78-1.87-.2-.47-.4-.4-.57-.41l-.49-.01c-.17 0-.45.06-.69.32s-.9.88-.9 2.15c0 1.27.92 2.49 1.04 2.66.12.17 1.8 2.75 4.36 3.86.61.26 1.09.41 1.46.53.61.19 1.17.16 1.61.1.49-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.12-.23-.18-.48-.3z"/>
-            </svg>
+        <a href="https://wa.link/o998xn" target="_blank" aria-label="WhatsApp">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="#25D366">
+            <path d="M12.04 2C6.58 2 2.18 6.4 2.18 11.86c0 2.09.55 4.02 1.61 5.75L2 22l4.51-1.74c1.65.9 3.49 1.37 5.53 1.37 5.46 0 9.86-4.4 9.86-9.86S17.5 2 12.04 2zm0 17.64c-1.73 0-3.33-.46-4.74-1.33l-.34-.2-2.68 1.03.96-2.61-.22-.34a8 8 0 1112.99-9.34 8 8 0 01-5.97 12.79zm4.52-6.02c-.25-.12-1.47-.72-1.7-.8-.23-.08-.4-.12-.57.12-.17.25-.65.8-.8.96-.15.17-.3.18-.55.06-.25-.12-1.06-.39-2.02-1.25-.75-.67-1.25-1.49-1.4-1.74-.15-.25-.02-.39.11-.51.12-.12.25-.3.37-.45.12-.15.17-.25.25-.42.08-.17.04-.32-.02-.45-.06-.12-.57-1.37-.78-1.87-.2-.47-.4-.4-.57-.41l-.49-.01c-.17 0-.45.06-.69.32s-.9.88-.9 2.15c0 1.27.92 2.49 1.04 2.66.12.17 1.8 2.75 4.36 3.86.61.26 1.09.41 1.46.53.61.19 1.17.16 1.61.1.49-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.12-.23-.18-.48-.3z"/>
+          </svg>
         </a>
 
         <!-- Instagram -->
         <a href="https://www.instagram.com/cigem_/" target="_blank" aria-label="Instagram">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="#E1306C">
-                <path d="M7.5 2h9A5.5 5.5 0 0122 7.5v9a5.5 5.5 0 01-5.5 5.5h-9A5.5 5.5 0 012 16.5v-9A5.5 5.5 0 017.5 2zm0 2A3.5 3.5 0 004 7.5v9A3.5 3.5 0 007.5 20h9a3.5 3.5 0 003.5-3.5v-9A3.5 3.5 0 0016.5 4h-9zm7.25 2.5a1.25 1.25 0 110 2.5 1.25 1.25 0 010-2.5zM12 7a5 5 0 110 10 5 5 0 010-10zm0 2a3 3 0 100 6 3 3 0 000-6z"/>
-            </svg>
+          <!-- ...icon... -->
         </a>
-    </div>
-</footer>
+      </div>
+    </footer>
 
     <script>
-      
+      let currentSlide = 0;
+      const slides = document.querySelectorAll('.carousel-slide');
+      const totalSlides = slides.length;
+
+      function showSlide(index) {
+        slides.forEach(slide => slide.classList.remove('active'));
+        slides[index].classList.add('active');
+      }
+
+      function changeSlide(direction) {
+        currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+        showSlide(currentSlide);
+      }
+
+      // Cambio automático cada 5 segundos
+      setInterval(() => changeSlide(1), 5000);
     </script>
-</body>
+  </body>
 </html>
