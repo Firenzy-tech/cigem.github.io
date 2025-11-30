@@ -1,4 +1,4 @@
-   fetch("../../Pages/Componentes/Banner/inicio.html")
+   fetch("../../otherpages/banner.html")
         .then(response => response.text())
         .then(html => {
             document.getElementById("inicio").innerHTML = html;
