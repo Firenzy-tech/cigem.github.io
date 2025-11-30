@@ -1,4 +1,4 @@
-   fetch("../pages/banner.html")
+   fetch("..../pages/banner.html")
         .then(response => response.text())
         .then(html => {
             document.getElementById("inicio").innerHTML = html;
