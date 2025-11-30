@@ -23,7 +23,20 @@
                 <li><a href="Pages/QRLector.html">Lector QR</a></li>
             </ul>
         </nav>
-        <script src="Content/js/banner-loader.js"></script>
+        <!-- <script src="Content/js/banner-loader.js">
+
+            
+        </script> -->
+        <script>
+            fetch("/otherpages/banner.html")
+        .then(response => response.text())
+        .then(html => {
+            document.getElementById("inicio").innerHTML = html;
+        })
+        .catch(error => console.error("Error cargando el banner:", error));
+        </script>
+        
+        
     </header>
 
     
