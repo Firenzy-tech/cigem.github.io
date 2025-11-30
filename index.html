@@ -5,196 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cigem | Certificación de Esmeraldas</title>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --verde-oscuro: #e7ecea;
-            --verde-medio: #025930;
-            --dorado: #e7ecea;
-            --gris-claro: #8f9592;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Open Sans', sans-serif;
-        }
-
-        body {
-            background-color: var(--gris-claro);
-            color: var(--verde-oscuro);
-        }
-
-        header {
-            background-color: var(--verde-oscuro);
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 50px;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        header h1 {
-            font-weight: 700;
-            font-size: 1.8rem;
-            letter-spacing: 2px;
-            color: var(--dorado);
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        nav ul li {
-            margin-left: 30px;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: var(--gris-claro);
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-
-        nav ul li a:hover {
-            color: var(--dorado);
-        }
-
-        .hero {
-            background: linear-gradient(rgba(1, 38, 21, 0.6), rgba(1, 38, 21, 0.8)), 
-                        url('https://images.unsplash.com/photo-1590080875830-dc9e0d7a6a5d?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
-            color: white;
-            text-align: center;
-            padding: 120px 20px;
-        }
-
-        .hero h2 {
-            font-size: 2.8rem;
-            color: var(--dorado);
-            margin-bottom: 15px;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 30px;
-        }
-
-        .btn {
-            background-color: var(--verde-medio);
-            color: var(--verde-oscuro);
-            padding: 12px 30px;
-            border: none;
-            border-radius: 30px;
-            font-weight: 700;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .btn:hover {
-            background-color: var(--verde-medio);
-            color: white;
-        }
-
-        section {
-            padding: 60px 50px;
-            text-align: center;
-        }
-
-        .section-title {
-            color: var(--verde-oscuro);
-            font-size: 2rem;
-            margin-bottom: 30px;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            width: 80px;
-            height: 3px;
-            background-color: var(--dorado);
-            display: block;
-            margin: 10px auto 0;
-        }
-
-        .services {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        .card {
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(20, 18, 18, 0.1);
-            padding: 30px;
-            transition: transform 0.3s;
-            text-align: left;
-            color: #4A4130
-
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-        }
-
-        .card h3 {
-            color: var(--verde-medio);
-            margin-bottom: 15px;
-        }
-
-        .about {
-            background-color: var(--verde-oscuro);
-            color: var(--gris-claro);
-            padding: 80px 50px;
-        }
-
-        .about p {
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.7;
-        }
-
-        footer {
-            background-color: var(--verde-medio);
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
-
-        footer p {
-            font-size: 0.9rem;
-        }
-
-
-        #contacto {
-    text-align: center;
-    padding: 20px;
-    background: #111;
-    color: #fff;
-}
-
-.social-links {
-    margin-top: 10px;
-}
-
-.social-links a {
-    margin: 0 10px;
-    display: inline-block;
-    transition: transform 0.2s ease;
-}
-
-.social-links a:hover {
-    transform: scale(1.2);
-}
-
-    </style>
+    <link rel="stylesheet" href="/css/styles.css">
+    <script src="/js/app.js"></script>
+    
 </head>
+    
 <body>
     <header>
         <img src="Content/LOGO.png" alt="Descripción de la imagen" width="150">
@@ -208,33 +23,52 @@
                 <li><a href="Pages/QRLector.html">Lector QR</a></li>
             </ul>
         </nav>
+        <script src="/js/banner-loader.js"></script>
     </header>
 
+    
+
+       
     <section class="hero" id="inicio">
-        <h2>Centro de Investigación Gemológico de Medellín</h2>
-        <p>En CIGEM - Centro de Investigación Gemológico de Medellín, ofrecemos una amplia gama de servicios diseñados para satisfacer las necesidades de profesionales de la joyería y clientes finales. Nuestra dedicación a la precisión y la integridad garantiza resultados confiables y de la más alta calidad..</p>
-        <!--<button class="btn">Solicitar Certificación</button>-->
+        <div class="hero-content">
+          
+            <h1>Centro de Investigación Gemológico de Medellín</h1>
+            <p class="hero-subtitle">Certificación de Esmeraldas con Excelencia y Transparencia</p>
+            <a href="#servicios" class="cta-button">Conoce Nuestros Servicios</a>
+        </div>
     </section>
 
     <section id="servicios">
         <h2 class="section-title">Nuestros Servicios</h2>
         <div class="services">
             <div class="card">
+                <img src="content/Servicios2.jpg" alt="Emeralds" class="card-image">
                 <h3>Análisis de Piezas Montadas y Desmontadas</h3>
                 <p>Utilizamos microscopía avanzada, espectroscopía y otras técnicas no destructivas para determinar la naturaleza de la gema (natural, sintética, tratada), su origen (cuando es posible), y sus características de calidad (color, claridad, corte, peso). Se entrega un reporte detallado con todos los hallazgos.</p>
             </div>
             <div class="card">
+                  <img src="content/Servicios3.jpeg" alt="Emeralds" class="card-image">
                 <h3>Tasaciones y Valoraciones</h3>
                 <p>Nuestros gemólogos tasadores certificados realizan valoraciones basadas en análisis exhaustivos y conocimiento actual del mercado. Ofrecemos tasaciones para diversos propósitos: seguros, herencias, ventas, etc. Cada tasación se documenta con un informe completo.</p>
             </div>
             <div class="card">
+                <img src="content/Servicios1.jpeg" alt="Emeralds" class="card-image">
                 <h3>Certificación de Origen y Tratamientos</h3>
                 <p>Mediante análisis de inclusiones, composición química y otras técnicas avanzadas, podemos ofrecer opiniones sobre el origen geográfico de ciertas gemas (ej. zafiros, rubíes, esmeraldas) y detectar la presencia de tratamientos comunes o sofisticados que puedan afectar su valor y autenticidad.</p>
             </div>
-            <div class="card">
-                <h3>Servicios para Profesionales de la Joyería</h3>
-                <p>Ofrecemos servicios de clasificación de lotes de gemas, verificación rápida, consultas especializadas y programas de control de calidad. Entendemos las necesidades del profesional y ofrecemos tiempos de respuesta ágiles y confidencialidad absoluta.</p>
-            </div>
+
+
+            
+<div class="card">
+    <img src="content/Servicios4.jpeg" alt="Emeralds" class="card-image">
+    <h3>Servicios para Profesionales de la Joyería</h3>
+    <p>
+        Ofrecemos servicios de clasificación de lotes de gemas, verificación rápida, 
+        consultas especializadas y programas de control de calidad. Entendemos las 
+        necesidades del profesional y ofrecemos tiempos de respuesta ágiles y 
+        confidencialidad absoluta.
+    </p>
+</div>
         </div>
     </section>
 
@@ -268,15 +102,7 @@
 </footer>
 
     <script>
-        // Pequeña animación suave al hacer clic en los enlaces del menú
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
+      
     </script>
 </body>
 </html>
