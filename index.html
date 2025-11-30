@@ -6,7 +6,10 @@
     <title>Cigem | Certificación de Esmeraldas</title>
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- CSS: usar misma carpeta que en tu disco (minúsculas) -->
     <link rel="stylesheet" href="Content/css/styles.css" />
@@ -44,8 +47,12 @@
           </div>
           <!-- ...existing code... -->
         </div>
-        <button class="carousel-control prev" onclick="changeSlide(-1)">&#10094;</button>
-        <button class="carousel-control next" onclick="changeSlide(1)">&#10095;</button>
+        <button class="carousel-control prev" onclick="changeSlide(-1)">
+          &#10094;
+        </button>
+        <button class="carousel-control next" onclick="changeSlide(1)">
+          &#10095;
+        </button>
       </div>
 
       <div class="hero-content">
@@ -62,28 +69,65 @@
 
       <div class="services">
         <div class="card">
-          <img src="Content/img/Servicios2.jpg" alt="Análisis de piezas" class="card-image" />
+          <img
+            src="Content/img/Servicios2.jpg"
+            alt="Análisis de piezas"
+            class="card-image"
+          />
           <h3>Análisis de Piezas Montadas y Desmontadas</h3>
           <p>
+            Utilizamos microscopía avanzada, espectroscopía y otras técnicas no
+            destructivas para determinar la naturaleza de la gema (natural,
+            sintética, tratada), su origen (cuando es posible), y sus
+            características de calidad (color, claridad, corte, peso). Se
+            entrega un reporte detallado con todos los hallazgos.
           </p>
         </div>
 
         <div class="card">
-          <img src="Content/img/Servicios3.jpeg" alt="Tasaciones" class="card-image" />
+          <img
+            src="Content/img/Servicios3.jpeg"
+            alt="Tasaciones"
+            class="card-image"
+          />
           <h3>Tasaciones y Valoraciones</h3>
           <p>
+            Nuestros gemólogos tasadores certificados realizan valoraciones
+            basadas en análisis exhaustivos y conocimiento actual del mercado.
+            Ofrecemos tasaciones para diversos propósitos: seguros, herencias,
+            ventas, etc. Cada tasación se documenta con un informe completo.
           </p>
         </div>
 
         <div class="card">
-          <img src="Content/img/Servicios1.jpeg" alt="Certificación" class="card-image" />
+          <img
+            src="Content/img/Servicios1.jpeg"
+            alt="Certificación"
+            class="card-image"
+          />
           <h3>Certificación de Origen y Tratamientos</h3>
           <p>
+            Mediante análisis de inclusiones, composición química y otras
+            técnicas avanzadas, podemos ofrecer opiniones sobre el origen
+            geográfico de ciertas gemas (ej. zafiros, rubíes, esmeraldas) y
+            detectar la presencia de tratamientos comunes o sofisticados que
+            puedan afectar su valor y autenticidad.
           </p>
         </div>
 
         <div class="card">
-          <img src="Content/img/Servicios4.jpeg" alt="Servicios profesionales" class="card-image" />
+          <img
+            src="Content/img/Servicios4.jpeg"
+            alt="Servicios profesionales"
+            class="card-image"
+          />
+          <h3>Servicios para Profesionales de la Joyería</h3>
+          <p>
+            Ofrecemos servicios de clasificación de lotes de gemas, verificación
+            rápida, consultas especializadas y programas de control de calidad.
+            Entendemos las necesidades del profesional y ofrecemos tiempos de
+            respuesta ágiles y confidencialidad absoluta.
+          </p>
         </div>
       </div>
     </section>
@@ -99,7 +143,8 @@
 
     <footer id="contacto">
       <p>
-        © 2025 CIGEM - Centro Nacional de Gemología | +57 3502127792 | Todos los derechos reservados
+        © 2025 CIGEM - Centro Nacional de Gemología | +57 3502127792 | Todos los
+        derechos reservados
       </p>
 
       <div class="social-links">
@@ -108,19 +153,23 @@
         </a>
 
         <!-- Instagram -->
-        <a href="https://www.instagram.com/cigem_/" target="_blank" aria-label="Instagram">
+        <a
+          href="https://www.instagram.com/cigem_/"
+          target="_blank"
+          aria-label="Instagram"
+        >
         </a>
       </div>
     </footer>
 
     <script>
       let currentSlide = 0;
-      const slides = document.querySelectorAll('.carousel-slide');
+      const slides = document.querySelectorAll(".carousel-slide");
       const totalSlides = slides.length;
 
       function showSlide(index) {
-        slides.forEach(slide => slide.classList.remove('active'));
-        slides[index].classList.add('active');
+        slides.forEach((slide) => slide.classList.remove("active"));
+        slides[index].classList.add("active");
       }
 
       function changeSlide(direction) {
