@@ -11,9 +11,9 @@
 
         //banner
           const images = [
-    "Content/banner1.png",
-    "Content/banner2.png",
-    "Content/banner3.png"
+    "Content/img/banner1.png",
+    "Content/img/banner2.png",
+    "Content/img/banner3.png"
 ];
 let index = 0;
 setInterval(() => {
