@@ -330,3 +330,90 @@ body, .hero, .carousel {
   color: #fff;
   padding: 0 20px;
 }
+
+/* Ajustes responsivos para móviles */
+@media (max-width: 1024px) {
+  header {
+    padding: 12px 20px;
+  }
+
+  header img {
+    width: 120px;
+  }
+
+  nav ul {
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  section {
+    padding: 40px 20px;
+  }
+
+  .carousel {
+    height: 50vh;
+    max-height: 520px;
+  }
+
+  .hero-content {
+    bottom: 24px;
+    width: calc(100% - 30px);
+    padding: 0 15px;
+  }
+
+  .hero-content h1 {
+    font-size: 1.6rem;
+    line-height: 1.15;
+  }
+
+  .hero-content p {
+    font-size: 0.95rem;
+    max-width: 90%;
+    margin: 8px auto 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  header {
+    padding: 10px 12px;
+  }
+
+  header img {
+    width: 100px;
+  }
+
+  nav ul li {
+    margin-left: 10px;
+  }
+
+  .carousel {
+    height: 45vh;          /* evita usar 100vh en móviles (address bar issue) */
+    max-height: 420px;
+  }
+
+  .carousel-slide img {
+    object-fit: cover;     /* mantiene recorte pero evita redimensionar extraño */
+  }
+
+  .hero-content h1 {
+    font-size: 1.25rem;
+  }
+
+  .hero-content p {
+    font-size: 0.9rem;
+  }
+
+  .card {
+    padding: 18px;
+  }
+
+  section {
+    padding: 30px 12px;
+  }
+}
+
+/* Asegura imágenes fuera del carrusel no crezcan más del contenedor */
+img {
+  max-width: 100%;
+  height: auto;
+}
