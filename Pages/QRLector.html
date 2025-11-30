@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Lector QR</title>
+  <script src="https://unpkg.com/html5-qrcode"></script>
+  <style>
+    #reader {
+      width: 300px;
+      margin: 20px auto;
+      border: 2px solid #444;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Lector QR con JavaScript</h2>
+<div id="reader"></div>
+<p>Resultado: <span id="result"></span></p>
+
+<script>
+  const reader = new Html5Qrcode("reader");
+
+  reader.start(
+    { facingMode: "environment" },   // cámara trasera del móvil
+    { fps: 10, qrbox: 250 },
+    qr => {
+      document.getElementById("result").innerText = qr;
+      reader.stop(); // detiene la cámara al detectar el QR
+    },
+    error => {
+      console.log("Escaneando...", error);
+    }
+  );
+</script>
+
+</body>
+</html>
