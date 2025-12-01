@@ -97,7 +97,7 @@
 
         <article class="card">
           <div class="card-media">
-            <img src="Content/img/Servicios1.jpeg" alt="Certificación" />
+            <img src="Content/img/Servicios1.jpg" alt="Certificación" />
             <div class="card-overlay">
               <a class="card-button" href="#servicio-certificacion">Más información</a>
             </div>
@@ -227,9 +227,9 @@
     <div id="map" class="site-map" aria-label="Mapa de ubicación" style="height:380px;"></div>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
-      // Coordenadas proporcionadas por usted
       const lat = 6.2506616;
       const lng = -75.5683911;
+
       const map = L.map('map', { scrollWheelZoom: false }).setView([lat, lng], 15);
 
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -237,9 +237,21 @@
         attribution: '&copy; OpenStreetMap contributors'
       }).addTo(map);
 
-      L.marker([lat, lng]).addTo(map)
-        .bindPopup('<strong>CIGEM</strong><br>Ubicación principal')
-        .openPopup();
+      const marker = L.marker([lat, lng]).addTo(map)
+        .bindPopup('<strong>CIGEM</strong><br>Ubicación principal');
+
+      // URL para abrir en Google Maps (web o app según dispositivo)
+      const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(lat + ',' + lng)}`;
+
+      // Cursor de puntero sobre el mapa
+      map.getContainer().style.cursor = 'pointer';
+
+      // Abrir Google Maps al hacer clic en el mapa o en el marcador
+      map.on('click', () => window.open(mapsUrl, '_blank'));
+      marker.on('click', () => window.open(mapsUrl, '_blank'));
+
+      // abrir popup inicialmente
+      marker.openPopup();
     </script>
 
     <script>
