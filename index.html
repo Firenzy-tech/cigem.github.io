@@ -11,8 +11,10 @@
       rel="stylesheet"
     />
 
-    <!-- CSS: usar misma carpeta que en tu disco (minúsculas) -->
-    <link rel="stylesheet" href="Content/css/styles.css" />
+    <!-- CSS: usar carpeta en minúsculas (content) -->
+    <link rel="stylesheet" href="content/css/styles.css" />
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   </head>
 
   <body>
@@ -82,7 +84,7 @@
 
         <article class="card">
           <div class="card-media">
-            <img src="content/img/Servicios3.jpeg" alt="Tasaciones" />
+            <img src="Content/img/Servicios3.jpg" alt="Tasaciones" />
             <div class="card-overlay">
               <a class="card-button" href="#servicio-tasaciones">Solicitar tasación</a>
             </div>
@@ -95,7 +97,7 @@
 
         <article class="card">
           <div class="card-media">
-            <img src="content/img/Servicios1.jpeg" alt="Certificación" />
+            <img src="Content/img/Servicios1.jpeg" alt="Certificación" />
             <div class="card-overlay">
               <a class="card-button" href="#servicio-certificacion">Más información</a>
             </div>
@@ -108,7 +110,7 @@
 
         <article class="card">
           <div class="card-media">
-            <img src="content/img/Servicios4.jpeg" alt="Servicios profesionales" />
+            <img src="Content/img/Servicios4.jpeg" alt="Servicios profesionales" />
             <div class="card-overlay">
               <a class="card-button" href="#servicio-profesionales">Contactar</a>
             </div>
@@ -183,7 +185,7 @@
     <footer id="contacto" class="footer">
       <div class="footer-content">
         <p>© 2025 CIGEM - Centro Nacional de Gemología</p>
-        <p>+57 3502127792 | Todos los derechos reservados</p>
+        <p>+57 3502127792 Cl. 51 #51-17, La Candelaria oficina 506. | Todos los derechos reservados</p>
 
         <div class="social-links">
           <!-- WhatsApp -->
@@ -220,6 +222,28 @@
         </div>
       </div>
     </footer>
+
+    <!-- Mapa interactivo - Leaflet -->
+    <div id="map" class="site-map" aria-label="Mapa de ubicación" style="height:380px;"></div>
+     <a
+            href="https://www.google.com/maps/place/Cl.+51+%2351-17,+La+Candelaria,+Medell%C3%ADn,+La+Candelaria,+Medell%C3%ADn,+Antioquia/@6.2507235,-75.5684027,17z/data=!3m1!4b1!4m6!3m5!1s0x8e4428f8d4ae4383:0xe01bd41e309e63f1!8m2!3d6.2507235!4d-75.5684027!16s%2Fg%2F11j3pm2rkz?entry=ttu&g_ep=EgoyMDI1MTEyMy4xIKXMDSoASAFQAw%3D%3D"          
+          >
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+      // Coordenadas proporcionadas por usted
+      const lat = 6.2506616;
+      const lng = -75.5683911;
+      const map = L.map('map', { scrollWheelZoom: false }).setView([lat, lng], 15);
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '&copy; OpenStreetMap contributors'
+      }).addTo(map);
+
+      L.marker([lat, lng]).addTo(map)
+        .bindPopup('<strong>CIGEM</strong><br>Ubicación principal')
+        .openPopup();
+    </script>
 
     <script>
       let currentSlide = 0;
