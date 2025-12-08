@@ -22,14 +22,19 @@
 
   <body>
     <header>
-      <img src="Content/img/LOGO.png" alt="Logo Cigem" width="150"  id="closeBtn" />
+      <img
+        src="Content/img/LOGO.png"
+        alt="Logo Cigem"
+        width="150"
+        id="closeBtn"
+      />
 
-      <nav  id="closeBtn">
+      <nav id="closeBtn">
         <!-- Botón hamburguesa (solo cuando el menú está cerrado) -->
         <div class="hamburger" id="hamburger">☰</div>
 
         <!-- Botón cerrar (solo cuando el menú está abierto) -->
-        <div class="close-btn" id="closeBtn"> </div>
+        <div class="close-btn" id="closeBtn"></div>
         <ul id="menu">
           <li><a href="#inicio">Inicio</a></li>
           <li><a href="#servicios">Servicios</a></li>
@@ -40,33 +45,56 @@
       </nav>
     </header>
 
-    <section class="hero" id="inicio">
-      <div class="carousel">
-        <div class="carousel-inner">
-          <div class="carousel-slide active">
-            <img
-              src="Content/img/banner1.png"
-              alt="Banner 1"
-              style="height: 400px"
-            />
-          </div>
+<section class="hero" id="inicio">
+  <div class="carousel">
+    <div class="carousel-inner">
 
-          <div class="carousel-slide">
-            <img
-              src="Content/img/banner2.png"
-              alt="Banner 2"
-              style="height: 400px"
-            />
-          </div>
+      <div class="carousel-slide active">
+        <img 
+          src="Content/img/banner1.png"
+          data-mobile="Content/img/movil1.jpeg"
+          alt="Banner 1"
+        />
+      </div>
 
-          <div class="carousel-slide">
-            <img
-              src="Content/img/banner4.jpg"
-              alt="Banner 3"
-              style="height: 400px"
-            />
-          </div>
-        </div>
+      <div class="carousel-slide">
+        <img 
+          src="Content/img/banner2.png"
+          data-mobile="Content/img/movil2.jpeg"
+          alt="Banner 2"
+        />
+      </div>
+
+      <div class="carousel-slide">
+        <img 
+          src="Content/img/banner4.jpg"
+          data-mobile="Content/img/movil3.jpeg"
+          alt="Banner 3"
+        />
+      </div>
+
+      <div class="carousel-slide">
+        <img 
+          data-mobile="Content/img/movil4.jpeg"
+          alt="Banner 3"
+        />
+      </div>
+         <div class="carousel-slide">
+        <img 
+          data-mobile="Content/img/movil5.jpg"
+          alt="Banner 3"
+        />
+      </div>
+         <div class="carousel-slide">
+        <img 
+          data-mobile="Content/img/movil6.jpeg"
+          alt="Banner 3"
+        />
+      </div>
+
+    </div>
+  </div>
+</section>
 
         <button class="carousel-control prev" onclick="changeSlide(-1)">
           &#10094;
@@ -380,6 +408,27 @@
         ham.classList.remove("hide"); // Muestra la hamburguesa
         closeBtn.classList.remove("show"); // Oculta la X
       });
+
+      //modo movil control
+      function actualizarSliderParaMovil() {
+        const esMovil = window.innerWidth <= 768;
+        const imagenes = document.querySelectorAll(".carousel-slide img");
+
+        imagenes.forEach((img) => {
+          const original = img.getAttribute("src");
+          const mobile = img.getAttribute("data-mobile");
+
+          if (esMovil && mobile) {
+            img.dataset.original = original;
+            img.src = mobile;
+          } else if (!esMovil && img.dataset.original) {
+            img.src = img.dataset.original;
+          }
+        });
+      }
+
+      actualizarSliderParaMovil();
+      window.addEventListener("resize", actualizarSliderParaMovil);
     </script>
   </body>
 </html>
