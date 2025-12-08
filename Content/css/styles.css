@@ -381,3 +381,59 @@ img{max-width:100%;height:auto;display:block}
 }
 
 .site-map { cursor: pointer; }
+
+
+    /* --- Solo lo necesario para que sea hamburguesa --- */
+
+.hamburger {
+      display: none;
+      font-size: 32px;
+      cursor: pointer;
+      user-select: none;
+      transition: opacity .3s;
+    }
+
+    /* Oculta la hamburguesa cuando está en modo "open" */
+    /* SIEMPRE OCULTA LA X POR DEFECTO */
+    .close-btn {
+      display: none;
+      font-size: 32px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    /* SIEMPRE OCULTA LA HAMBURGUESA POR DEFECTO (solo aparece en móvil) */
+     .hamburger,
+    .close-btn {
+      font-size: 32px;
+      cursor: pointer;
+      user-select: none;
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      /* Mostrar hamburguesa cuando el menú NO está abierto */
+      .hamburger {
+        display: block;
+      }
+
+      nav ul {
+        display: none;
+        flex-direction: column;
+      }
+
+      /* Menú extendido */
+      nav ul.active {
+        display: flex;
+      }
+
+      /* Mostrar X solo cuando el menú está activo */
+      .close-btn.show {
+        display: block;
+      }
+
+      /* Ocultar hamburguesa cuando menú está activo */
+      .hamburger.hide {
+        display: none;
+      }
+    }
