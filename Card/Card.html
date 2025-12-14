@@ -305,6 +305,23 @@
   <nav class="navbar">
     <a href="../index.html" class="navbar-link">⟵ Inicio</a>
     <span class="navbar-title">Credencial</span>
+    <button id="btnScanQR" class="navbar-link" style="margin-left:auto; background:#16a34a; color:#fff; font-weight:700; border-radius:8px; padding:7px 16px; font-size:1em; display:inline-block; border:none; cursor:pointer;">Validar Certificado</button>
+    <!-- Modal para escanear QR -->
+    <div id="qrModal" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100vw; height:100vh; background:rgba(15,23,42,0.92); align-items:center; justify-content:center;">
+      <div style="background:#fff; border-radius:18px; padding:24px 18px 18px 18px; max-width:370px; width:95vw; margin:auto; box-shadow:0 8px 32px rgba(2,89,48,0.18); position:relative;">
+        <button id="closeQRModal" style="position:absolute; top:10px; right:10px; background:none; border:none; font-size:1.7em; color:#025930; cursor:pointer;">&times;</button>
+        <h3 style="color:#025930; margin-bottom:10px;">Escanear código QR</h3>
+        <div id="reader" style="width:100%; max-width:320px; margin:0 auto;"></div>
+              <div id="qrSuccess" style="display:none; text-align:center; margin-top:18px;">
+                <div style="font-size:2.2em; color:#16a34a; margin-bottom:8px;">
+                  <i style="font-style:normal;">✔</i>
+                </div>
+                <div style="color:#025930; font-weight:700; font-size:1.1em;">¡QR válido detectado!</div>
+              </div>
+      </div>
+    </div>
+    <!-- Librería QR -->
+    <script src="https://unpkg.com/html5-qrcode"></script>
   </nav>
   <div class="stage">
     <!-- LADO IZQUIERDO -->
@@ -445,6 +462,45 @@
     </div>
   </footer>
   <script>
+        // QR Modal y escaneo
+        let scanner;
+        const btnScanQR = document.getElementById('btnScanQR');
+        const qrModal = document.getElementById('qrModal');
+        const closeQRModal = document.getElementById('closeQRModal');
+        btnScanQR.addEventListener('click', function() {
+          qrModal.style.display = 'flex';
+          if (!scanner) {
+            scanner = new Html5Qrcode("reader");
+          }
+          scanner.start(
+            { facingMode: "environment" },
+            { fps: 10, qrbox: 250 },
+            qrLeido,
+            () => {}
+          );
+        });
+        closeQRModal.addEventListener('click', function() {
+          qrModal.style.display = 'none';
+          if (scanner) scanner.stop();
+        });
+        function qrLeido(textoQR) {
+          if (scanner) scanner.stop();
+          if (textoQR.startsWith("https://")) {
+            // Mostrar mensaje de éxito animado
+            document.getElementById('reader').style.display = 'none';
+            const qrSuccess = document.getElementById('qrSuccess');
+            qrSuccess.style.display = 'block';
+            setTimeout(() => {
+              qrModal.style.display = 'none';
+              qrSuccess.style.display = 'none';
+              document.getElementById('reader').style.display = '';
+              window.open(textoQR, '_blank');
+            }, 1200);
+          } else {
+            qrModal.style.display = 'none';
+            alert("QR no seguro. Solo se permiten sitios HTTPS.");
+          }
+        }
     // Efecto de inclinación 3D con movimiento del mouse (idéntico a Card.html)
     (function () {
       const card = document.getElementById("card");
