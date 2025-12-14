@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Escanear QR</title>
+
+  <!-- Librería QR -->
+  <script src="https://unpkg.com/html5-qrcode"></script>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+
+    button {
+      padding: 14px 22px;
+      font-size: 16px;
+      background: #16a34a;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    #reader {
+      width: 100%;
+      max-width: 350px;
+      margin: 20px auto;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Escanear código QR</h2>
+
+  <button onclick="abrirCamara()">Abrir cámara</button>
+
+  <div id="reader"></div>
+
+  <script>
+    let scanner;
+
+    function abrirCamara() {
+      document.getElementById("reader").style.display = "block";
+
+      scanner = new Html5Qrcode("reader");
+
+      scanner.start(
+        { facingMode: "environment" }, // Cámara trasera
+        { fps: 10, qrbox: 250 },
+        qrLeido,
+        error => {}
+      );
+    }
+
+    function qrLeido(textoQR) {
+      scanner.stop();
+
+      // Validación mínima de seguridad
+      if (textoQR.startsWith("https://")) {
+        window.location.href = textoQR;
+      } else {
+        alert("QR no seguro. Solo se permiten sitios HTTPS.");
+      }
+    }
+  </script>
+
+</body>
+</html>

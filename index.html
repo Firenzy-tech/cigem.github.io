@@ -13,6 +13,8 @@
 
     <!-- CSS: usar carpeta en minúsculas (content) -->
     <link rel="stylesheet" href="Content/css/styles.css" />
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <!-- Leaflet CSS -->
     <link
       rel="stylesheet"
@@ -21,28 +23,26 @@
   </head>
 
   <body>
-    <header>
-      <img
-        src="Content/img/LOGO.png"
-        alt="Logo Cigem"
-        width="150"
-        id="closeBtn"
-      />
-
-      <nav id="closeBtn">
-        <!-- Botón hamburguesa (solo cuando el menú está cerrado) -->
-        <div class="hamburger" id="hamburger">☰</div>
-
-        <!-- Botón cerrar (solo cuando el menú está abierto) -->
-        <div class="close-btn" id="closeBtn"></div>
-        <ul id="menu">
-          <li><a href="#inicio">Inicio</a></li>
-          <li><a href="#servicios">Servicios</a></li>
-          <li><a href="#nosotros">Nosotros</a></li>
-          <li><a href="#contacto">Contacto</a></li>
-          <li><a href="Card/Card.html">Certificado</a></li>
-        </ul>
-      </nav>
+    <header class="main-header enhanced-header">
+      <div class="header-container enhanced-header-container">
+        <a href="#inicio" class="logo-link enhanced-logo-link">
+          <img src="Content/img/LOGO.png" alt="Logo Cigem" class="logo-img enhanced-logo-img" />
+        </a>
+        <nav class="nav-bar enhanced-nav-bar">
+          <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" tabindex="0">
+            <span class="nav-toggle-bar"></span>
+            <span class="nav-toggle-bar"></span>
+            <span class="nav-toggle-bar"></span>
+          </button>
+          <ul class="nav-menu" id="navMenu">
+            <li><a href="#inicio"><span class="nav-icon"><i class="bi bi-house-door-fill"></i></span>Inicio</a></li>
+            <li><a href="#servicios"><span class="nav-icon"><i class="bi bi-briefcase-fill"></i></span>Servicios</a></li>
+            <li><a href="#nosotros"><span class="nav-icon"><i class="bi bi-people-fill"></i></span>Nosotros</a></li>
+            <li><a href="#contacto"><span class="nav-icon"><i class="bi bi-telephone-fill"></i></span>Contacto</a></li>
+            <li><a href="Card/Card.html"><span class="nav-icon"><i class="bi bi-file-earmark-text-fill"></i></span>Certificado</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
 
 <section class="hero" id="inicio">
@@ -73,11 +73,7 @@
         />
       </div>
 
-      <div class="carousel-slide">
-        <img 
-          data-mobile="Content/img/movil4.jpeg"
-          alt="Banner 3"
-        />
+
       </div>
          <div class="carousel-slide">
         <img 
@@ -104,14 +100,18 @@
         </button>
       </div>
 
-      <div class="hero-content">
-        <h1>Centro de Investigación Gemológico de Medellín</h1>
+
+    </section>
+
+    <div class="hero-content improved-hero-content" style="position:relative;max-width:100vw;z-index:10;margin:0 auto;top:0;left:0;transform:none;padding-top:32px;padding-bottom:18px;">
+      <div class="hero-text-bg">
+        <h1 class="hero-title">Centro de Investigación Gemológico de Medellín</h1>
         <p class="hero-subtitle">
           Certificación de Esmeraldas con Excelencia y Transparencia
         </p>
-        <a href="#servicios" class="cta-button">Conoce Nuestros Servicios</a>
+        <a href="#servicios" class="cta-button hero-cta">Conoce Nuestros Servicios</a>
       </div>
-    </section>
+    </div>
 
     <section id="servicios">
       <h2 class="section-title">Nuestros Servicios</h2>
@@ -198,96 +198,76 @@
 
     <section class="about" id="nosotros">
       <div class="about-container">
+        <div class="about-image">
+          <img src="Content/img/LOGO.png" alt="CIGEM Laboratorio" loading="lazy" class="animated-logo" style="background:#fffbe6; padding:18px; border-radius:16px; max-width:340px; margin:0 auto; box-shadow:0 4px 24px rgba(2,89,48,0.10);">
+          <style>
+            .animated-logo {
+              animation: logo-fade-in-scale 1.8s cubic-bezier(0.23, 1, 0.32, 1) 0.2s both;
+              box-shadow: 0 8px 32px rgba(2,89,48,0.18), 0 1.5px 8px rgba(0,0,0,0.06);
+              transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.4s;
+            }
+            .animated-logo:hover {
+              transform: scale(1.045) rotate(-2deg) translateY(-4px);
+              box-shadow: 0 16px 48px rgba(2,89,48,0.22), 0 2px 12px rgba(0,0,0,0.10);
+            }
+            @keyframes logo-fade-in-scale {
+              0% {
+                opacity: 0;
+                transform: scale(0.7) rotate(-8deg) translateY(40px);
+                filter: blur(8px) brightness(1.2);
+              }
+              60% {
+                opacity: 1;
+                transform: scale(1.08) rotate(2deg) translateY(-8px);
+                filter: blur(0.5px) brightness(1.05);
+              }
+              85% {
+                transform: scale(0.98) rotate(-1deg) translateY(2px);
+                filter: blur(0px) brightness(1);
+              }
+              100% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg) translateY(0);
+                filter: none;
+              }
+            }
+          </style>
+        </div>
         <div class="about-content">
-          <h2 class="section-title" style="color: var(--dorado)">
-            Sobre Cigem
+          <h2 class="section-title" style="color: var(--dorado); margin-bottom: 18px;">
+            Sobre CIGEM
           </h2>
           <p class="about-intro">
-            CIGEM preserva la transparencia y excelencia en el mercado de
-            piedras preciosas. Con enfoque en esmeraldas colombianas, combinamos
-            ciencia, tradición y ética para garantizar confianza en cada
-            análisis.
+            En CIGEM, fusionamos ciencia, tradición y ética para preservar la transparencia y excelencia en el mercado de piedras preciosas, con un enfoque especial en esmeraldas colombianas. Nuestro laboratorio está comprometido con la confianza y la innovación en cada análisis.
           </p>
-
           <div class="about-features">
             <div class="feature">
               <div class="feature-icon">
-                <svg
-                  width="40"
-                  height="40"
-                  viewBox="0 0 24 24"
-                  fill="var(--dorado)"
-                >
-                  <path
-                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
-                  />
-                </svg>
+                <i class="bi bi-patch-check-fill" style="font-size:2.2rem;color:var(--dorado);"></i>
               </div>
               <h3>Certificación Confiable</h3>
-              <p>
-                Certificados reconocidos internacionalmente con análisis
-                exhaustivos y rigurosos.
-              </p>
+              <p>Certificados reconocidos internacionalmente con análisis exhaustivos y rigurosos.</p>
             </div>
-
             <div class="feature">
               <div class="feature-icon">
-                <svg
-                  width="40"
-                  height="40"
-                  viewBox="0 0 24 24"
-                  fill="var(--dorado)"
-                >
-                  <path
-                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"
-                  />
-                </svg>
+                <i class="bi bi-gem" style="font-size:2.2rem;color:var(--dorado);"></i>
               </div>
               <h3>Experiencia Gemológica</h3>
-              <p>
-                Equipo de gemólogos certificados con más de 20 años de
-                experiencia en el sector.
-              </p>
+              <p>Equipo de gemólogos certificados con más de 20 años de experiencia en el sector.</p>
             </div>
-
             <div class="feature">
               <div class="feature-icon">
-                <svg
-                  width="40"
-                  height="40"
-                  viewBox="0 0 24 24"
-                  fill="var(--dorado)"
-                >
-                  <path
-                    d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.72-7 8.77V12H5V6.3l7-3.11v8.8z"
-                  />
-                </svg>
+                <i class="bi bi-eye-fill" style="font-size:2.2rem;color:var(--dorado);"></i>
               </div>
               <h3>Transparencia Total</h3>
-              <p>
-                Reportes detallados y accesibles que garantizan la confiabilidad
-                de cada análisis.
-              </p>
+              <p>Reportes detallados y accesibles que garantizan la confiabilidad de cada análisis.</p>
             </div>
-
             <div class="feature">
               <div class="feature-icon">
-                <svg
-                  width="40"
-                  height="40"
-                  viewBox="0 0 24 24"
-                  fill="var(--dorado)"
-                >
-                  <path
-                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"
-                  />
-                </svg>
+                <i class="bi bi-cpu-fill" style="font-size:2.2rem;color:var(--dorado);"></i>
               </div>
               <h3>Tecnología Avanzada</h3>
-              <p>
-                Equipos especializados: microscopía, espectroscopía y análisis
-                científicos de vanguardia.
-              </p>
+              <p>Equipos especializados: microscopía, espectroscopía y análisis científicos de vanguardia.</p>
             </div>
           </div>
         </div>
@@ -303,30 +283,11 @@
         </p>
 
         <div class="social-links">
-          <!-- WhatsApp -->
-          <a
-            href="https://wa.link/o998xn"
-            target="_blank"
-            aria-label="WhatsApp"
-          >
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="#25D366">
-              <path
-                d="M12.04 2C6.58 2 2.18 6.4 2.18 11.86c0 2.09.55 4.02 1.61 5.75L2 22l4.51-1.74c1.65.9 3.49 1.37 5.53 1.37 5.46 0 9.86-4.4 9.86-9.86S17.5 2 12.04 2zm0 17.64c-1.73 0-3.33-.46-4.74-1.33l-.34-.2-2.68 1.03.96-2.61-.22-.34a8 8 0 1112.99-9.34 8 8 0 01-5.97 12.79zm4.52-6.02c-.25-.12-1.47-.72-1.7-.8-.23-.08-.4-.12-.57.12-.17.25-.65.8-.8.96-.15.17-.3.18-.55.06-.25-.12-1.06-.39-2.02-1.25-.75-.67-1.25-1.49-1.4-1.74-.15-.25-.02-.39.11-.51.12-.12.25-.3.37-.45.12-.15.17-.25.25-.42.08-.17.04-.32-.02-.45-.06-.12-.57-1.37-.78-1.87-.2-.47-.4-.4-.57-.41l-.49-.01c-.17 0-.45.06-.69.32s-.9.88-.9 2.15c0 1.27.92 2.49 1.04 2.66.12.17 1.8 2.75 4.36 3.86.61.26 1.09.41 1.46.53.61.19 1.17.16 1.61.1.49-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.15-1.18-.06-.12-.23-.18-.48-.3z"
-              />
-            </svg>
+          <a href="https://wa.link/o998xn" target="_blank" aria-label="WhatsApp">
+            <i class="bi bi-whatsapp"></i>
           </a>
-
-          <!-- Instagram -->
-          <a
-            href="https://www.instagram.com/cigem_/"
-            target="_blank"
-            aria-label="Instagram"
-          >
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="#E4405F">
-              <path
-                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.266.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1 1 12.324 0 6.162 6.162 0 0 1-12.324 0zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm4.965-10.322a1.44 1.44 0 1 1 2.881.001 1.44 1.44 0 0 1-2.881-.001z"
-              />
-            </svg>
+          <a href="https://www.instagram.com/cigem_/" target="_blank" aria-label="Instagram">
+            <i class="bi bi-instagram"></i>
           </a>
         </div>
       </div>
@@ -392,21 +353,21 @@
       // Cambio automático cada 5 segundos
       setInterval(() => changeSlide(1), 5000);
 
-      //Hamburguer menu
-      const ham = document.getElementById("hamburger");
-      const closeBtn = document.getElementById("closeBtn");
-      const menu = document.getElementById("menu");
+      // Header nav responsive
+      const navToggle = document.getElementById("navToggle");
+      const navMenu = document.getElementById("navMenu");
 
-      ham.addEventListener("click", () => {
-        menu.classList.add("active");
-        ham.classList.add("hide"); // Oculta la hamburguesa
-        closeBtn.classList.add("show"); // Muestra la X
+      navToggle.addEventListener("click", () => {
+        navMenu.classList.toggle("active");
+        navToggle.classList.toggle("open");
       });
 
-      closeBtn.addEventListener("click", () => {
-        menu.classList.remove("active");
-        ham.classList.remove("hide"); // Muestra la hamburguesa
-        closeBtn.classList.remove("show"); // Oculta la X
+      // Cierra el menú al hacer click fuera (opcional)
+      document.addEventListener("click", (e) => {
+        if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) {
+          navMenu.classList.remove("active");
+          navToggle.classList.remove("open");
+        }
       });
 
       //modo movil control
