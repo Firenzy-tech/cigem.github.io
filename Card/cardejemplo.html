@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Certificado Gemológico</title>
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#e8dcc7;
+  font-family:"Segoe UI", system-ui, sans-serif;
+}
+
+/* TARJETA */
+.card{
+  width:340px;
+  height:560px;
+  background:#fff;
+  border-radius:18px;
+  position:relative;
+  box-shadow:0 20px 40px rgba(0,0,0,.18);
+  overflow:hidden;
+  /* Marca de agua: patrón base, pero el dorado y transparencia se aplican con ::before */
+  background: #fff;
+  position: relative;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: url('../Content/img/LOGO.png');
+  background-size: 60px 60px;
+  background-repeat: repeat;
+  background-position: 0 0;
+  opacity: 0.09;
+  filter: sepia(1) hue-rotate(-20deg) saturate(2) brightness(1.1);
+  pointer-events: none;
+}
+}
+
+/* Marca de agua dorada */
+
+}
+
+/* FONDO CON ONDAS */
+.card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at top left,#f2f2f2 20%,transparent 21%),
+    radial-gradient(circle at bottom right,#f2f2f2 20%,transparent 21%);
+  opacity:.35;
+}
+
+/* CONTENIDO */
+.content{
+  position:relative;
+  padding:18px;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  z-index: 1;
+}
+
+/* LOGO */
+.logo{
+  width:140px;
+  margin-bottom:6px;
+}
+
+/* ANILLO */
+.ring{
+  width:240px;
+  margin-top:-8px;
+}
+
+/* TEXTO CENTRAL */
+.center-text{
+  text-align:center;
+  margin-top:6px;
+}
+
+.center-text .mr{
+  font-size:14px;
+  font-weight:600;
+  letter-spacing:.5px;
+}
+
+.center-text .title{
+  font-size:13px;
+  margin-top:6px;
+}
+
+.center-text .name{
+  font-size:16px;
+  font-weight:700;
+  margin-top:4px;
+}
+
+.center-text .code{
+  font-size:12px;
+  margin-top:4px;
+}
+
+/* BLOQUE QR + SELLO */
+.bottom{
+  margin-top:auto;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+}
+
+.qr{
+  width:95px;
+}
+
+.seal{
+  width:90px;
+}
+
+/* TEXTO LEGAL */
+.legal{
+  font-size:10px;
+  text-align:center;
+  margin-top:10px;
+  color:#444;
+  line-height:1.3;
+}
+
+/* PIE */
+.footer{
+  font-size:9px;
+  text-align:center;
+  color:#666;
+  margin-top:6px;
+}
+</style>
+</head>
+
+<body>
+
+<section class="card">
+  <div class="content" style="position:relative; z-index:2;">
+
+    <img src="../Content/img/LOGO.png" class="logo" alt="CIGEM">
+
+    <img src="../Content/img/Certiificado.png" class="ring" alt="Anillo certificado">
+
+    <div class="center-text">
+      <div class="mr">M. R. Nº 061125113899</div>
+      <div class="title">GEMÓLOGO CALIFICADOR</div>
+      <div class="name">JHONATAN RESTREPO</div>
+      <div class="code">Código Socio: AWWYK2Q3Y</div>
+    </div>
+
+    <div class="bottom">
+      <img src="../Content/img/QR.png" class="qr" alt="QR">
+      <img src="../Content/img/sello.png" class="seal" alt="Sello CIGEM">
+    </div>
+
+    <div class="legal">
+      C.E.I.G.A G.N. GEMÓLOGOS S.L.<br>
+      C.I.F B-88022931<br>
+      C/Ferraz, Torre 1<br>
+      28008 (Madrid)
+    </div>
+
+    <div class="footer">
+      © CIGEM Todos los derechos reservados. Reproducción prohibida sin autorización
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>
