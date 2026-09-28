@@ -305,7 +305,19 @@
   <nav class="navbar">
     <a href="../index.html" class="navbar-link">⟵ Inicio</a>
     <span class="navbar-title">Credencial</span>
-    <button id="btnScanQR" class="navbar-link" style="margin-left:auto; background:#16a34a; color:#fff; font-weight:700; border-radius:8px; padding:7px 16px; font-size:1em; display:inline-block; border:none; cursor:pointer;">Validar Certificado</button>
+    <button id="btnValidarNumero" class="navbar-link" style="margin-left:auto; background:#16a34a; color:#fff; font-weight:700; border-radius:8px; padding:7px 16px; font-size:1em; display:inline-block; border:none; cursor:pointer;">Validar Certificado</button>
+    <button id="btnScanQR" class="navbar-link" style="background:#025930; color:#fff; font-weight:700; border-radius:8px; padding:7px 16px; font-size:1em; display:inline-block; border:none; cursor:pointer;">Escanear QR</button>
+    <!-- Modal para digitar el número de certificado -->
+    <div id="certModal" style="display:none; position:fixed; z-index:9998; left:0; top:0; width:100vw; height:100vh; background:rgba(15,23,42,0.92); align-items:center; justify-content:center;">
+      <div style="background:#fff; border-radius:18px; padding:24px 18px 18px 18px; max-width:370px; width:95vw; margin:auto; box-shadow:0 8px 32px rgba(2,89,48,0.18); position:relative;">
+        <button id="closeCertModal" style="position:absolute; top:10px; right:10px; background:none; border:none; font-size:1.7em; color:#025930; cursor:pointer;">&times;</button>
+        <h3 style="color:#025930; margin-bottom:10px;">Validar certificado</h3>
+        <label for="certInput" style="display:block; color:#406956; font-weight:600; margin-bottom:6px; font-size:0.95em;">Ingresa el número de certificado</label>
+        <input id="certInput" type="text" placeholder="Ej: 1" style="width:100%; padding:10px 12px; border:1px solid #cbd5e1; border-radius:8px; font-size:1em; box-sizing:border-box;" />
+        <div id="certError" style="display:none; color:#b91c1c; font-size:0.85em; margin-top:8px;"></div>
+        <button id="btnBuscarCert" style="margin-top:14px; width:100%; background:#16a34a; color:#fff; font-weight:700; border:none; border-radius:8px; padding:10px 0; font-size:1em; cursor:pointer;">Buscar</button>
+      </div>
+    </div>
     <!-- Modal para escanear QR -->
     <div id="qrModal" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100vw; height:100vh; background:rgba(15,23,42,0.92); align-items:center; justify-content:center;">
       <div style="background:#fff; border-radius:18px; padding:24px 18px 18px 18px; max-width:370px; width:95vw; margin:auto; box-shadow:0 8px 32px rgba(2,89,48,0.18); position:relative;">
@@ -320,6 +332,8 @@
               </div>
       </div>
     </div>
+    <!-- Toast de validación directa contra certificados.json -->
+    <div id="certToast" style="display:none; position:fixed; z-index:10000; left:50%; top:24px; transform:translateX(-50%); background:#16a34a; color:#fff; font-weight:700; padding:12px 22px; border-radius:10px; box-shadow:0 8px 24px rgba(2,89,48,0.3);"></div>
     <!-- Librería QR -->
     <script src="https://unpkg.com/html5-qrcode"></script>
   </nav>
@@ -465,9 +479,23 @@
         // QR Modal y escaneo
         let scanner;
         const btnScanQR = document.getElementById('btnScanQR');
+        const btnValidarNumero = document.getElementById('btnValidarNumero');
         const qrModal = document.getElementById('qrModal');
         const closeQRModal = document.getElementById('closeQRModal');
-        btnScanQR.addEventListener('click', function() {
+        const certModal = document.getElementById('certModal');
+        const closeCertModal = document.getElementById('closeCertModal');
+        const certInput = document.getElementById('certInput');
+        const certError = document.getElementById('certError');
+        const btnBuscarCert = document.getElementById('btnBuscarCert');
+
+        function mostrarToast(mensaje) {
+          const toast = document.getElementById('certToast');
+          toast.textContent = mensaje;
+          toast.style.display = 'block';
+          setTimeout(() => { toast.style.display = 'none'; }, 2500);
+        }
+
+        function abrirEscanerQR() {
           qrModal.style.display = 'flex';
           if (!scanner) {
             scanner = new Html5Qrcode("reader");
@@ -478,6 +506,50 @@
             qrLeido,
             () => {}
           );
+        }
+
+        // Abre el modal para que el usuario digite el número de certificado a validar
+        function abrirModalCertificado() {
+          certError.style.display = 'none';
+          certInput.value = '';
+          certModal.style.display = 'flex';
+          certInput.focus();
+        }
+
+        // Busca el certificado digitado en Repo/certificados.json
+        async function validarCertificado() {
+          const certId = certInput.value.trim();
+          if (!certId) {
+            certError.textContent = 'Ingresa un número de certificado.';
+            certError.style.display = 'block';
+            return;
+          }
+          try {
+            const respuesta = await fetch('../Repo/certificados.json');
+            const datos = await respuesta.json();
+            const encontrado = (datos.certificados || []).find(c => String(c.id) === String(certId));
+            if (encontrado) {
+              certModal.style.display = 'none';
+              mostrarToast('Certificado encontrado');
+              window.open(encontrado.url, '_blank');
+            } else {
+              certError.textContent = 'No se encontró un certificado con ese número.';
+              certError.style.display = 'block';
+            }
+          } catch (error) {
+            certError.textContent = 'No se pudo validar el certificado. Intenta de nuevo.';
+            certError.style.display = 'block';
+          }
+        }
+
+        btnValidarNumero.addEventListener('click', abrirModalCertificado);
+        btnScanQR.addEventListener('click', abrirEscanerQR);
+        btnBuscarCert.addEventListener('click', validarCertificado);
+        certInput.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter') validarCertificado();
+        });
+        closeCertModal.addEventListener('click', function() {
+          certModal.style.display = 'none';
         });
         closeQRModal.addEventListener('click', function() {
           qrModal.style.display = 'none';
