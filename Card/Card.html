@@ -332,7 +332,7 @@
               </div>
       </div>
     </div>
-    <!-- Toast de validación directa contra certificados.json -->
+    <!-- Toast de validación de certificados -->
     <div id="certToast" style="display:none; position:fixed; z-index:10000; left:50%; top:24px; transform:translateX(-50%); background:#16a34a; color:#fff; font-weight:700; padding:12px 22px; border-radius:10px; box-shadow:0 8px 24px rgba(2,89,48,0.3);"></div>
     <!-- Librería QR -->
     <script src="https://unpkg.com/html5-qrcode"></script>
@@ -516,29 +516,78 @@
           certInput.focus();
         }
 
-        // Busca el certificado digitado en Repo/certificados.json
+        let firebaseServicios;
+        function obtenerFirebase() {
+          if (!firebaseServicios) {
+            firebaseServicios = Promise.all([
+              import('https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js'),
+              import('https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js'),
+              import('https://www.gstatic.com/firebasejs/10.14.1/firebase-database.js')
+            ]).then(([appSdk, authSdk, databaseSdk]) => {
+              const app = appSdk.initializeApp({
+                apiKey: 'AIzaSyAV_hKIzHgziT2eyNzzCM5ZmZQkC3Go7YA',
+                authDomain: 'cigem-b0a12.firebaseapp.com',
+                databaseURL: 'https://cigem-b0a12-default-rtdb.firebaseio.com',
+                projectId: 'cigem-b0a12',
+                appId: '1:334094616245:web:75976cc0085b033043e0fc'
+              });
+              return { auth: authSdk.getAuth(app), authSdk, database: databaseSdk.getDatabase(app), databaseSdk };
+            }).catch(error => {
+              firebaseServicios = null;
+              throw error;
+            });
+          }
+          return firebaseServicios;
+        }
+
+        // Busca el certificado digitado en Firebase
         async function validarCertificado() {
+          if (btnBuscarCert.disabled) return;
           const certId = certInput.value.trim();
           if (!certId) {
             certError.textContent = 'Ingresa un número de certificado.';
             certError.style.display = 'block';
             return;
           }
+          certError.style.display = 'none';
+          const pestana = window.open('about:blank', '_blank');
+          if (!pestana) {
+            certError.textContent = 'Permite las ventanas emergentes para descargar el certificado.';
+            certError.style.display = 'block';
+            return;
+          }
+          pestana.opener = null;
+          btnBuscarCert.disabled = true;
           try {
-            const respuesta = await fetch('../Repo/certificados.json');
-            const datos = await respuesta.json();
-            const encontrado = (datos.certificados || []).find(c => String(c.id) === String(certId));
+            const { auth, authSdk, database, databaseSdk } = await obtenerFirebase();
+            await auth.authStateReady();
+            if (!auth.currentUser) await authSdk.signInAnonymously(auth);
+            const snapshot = await databaseSdk.get(databaseSdk.ref(database, 'desarrolladores'));
+            const datos = snapshot.val();
+            if (datos !== null && (typeof datos !== 'object' || Array.isArray(datos))) {
+              throw new Error('Respuesta de certificados inválida');
+            }
+            const encontrado = Object.values(datos || {}).find(c => c && String(c.id) === certId);
             if (encontrado) {
+              const url = new URL(encontrado.url);
+              if (url.protocol !== 'https:' || pestana.closed) {
+                throw new Error('No se pudo abrir la URL del certificado');
+              }
+              pestana.location.replace(url.href);
               certModal.style.display = 'none';
               mostrarToast('Certificado encontrado');
-              window.open(encontrado.url, '_blank');
             } else {
+              pestana.close();
               certError.textContent = 'No se encontró un certificado con ese número.';
               certError.style.display = 'block';
             }
           } catch (error) {
+            pestana.close();
+            console.error('Error al validar el certificado:', error);
             certError.textContent = 'No se pudo validar el certificado. Intenta de nuevo.';
             certError.style.display = 'block';
+          } finally {
+            btnBuscarCert.disabled = false;
           }
         }
 

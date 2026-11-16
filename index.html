@@ -1,395 +1,187 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cigem | Certificación de Esmeraldas</title>
 
-    <!-- Google Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cigem | Certificación de Esmeraldas</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" />
+  <link rel="stylesheet" href="Content/css/styles.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
 
-    <!-- CSS: usar carpeta en minúsculas (content) -->
-    <link rel="stylesheet" href="Content/css/styles.css" />
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    <!-- Leaflet CSS -->
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    />
-  </head>
+<body>
 
-  <body>
-    <header class="main-header enhanced-header">
-      <div class="header-container enhanced-header-container">
-        <a href="#inicio" class="logo-link enhanced-logo-link">
-          <img src="Content/img/LOGO.png" alt="Logo Cigem" class="logo-img enhanced-logo-img" />
-        </a>
-        <nav class="nav-bar enhanced-nav-bar">
-          <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" tabindex="0">
-            <span class="nav-toggle-bar"></span>
-            <span class="nav-toggle-bar"></span>
-            <span class="nav-toggle-bar"></span>
-          </button>
-          <ul class="nav-menu" id="navMenu">
-            <li><a href="#inicio"><span class="nav-icon"><i class="bi bi-house-door-fill"></i></span>Inicio</a></li>
-            <li><a href="#servicios"><span class="nav-icon"><i class="bi bi-briefcase-fill"></i></span>Servicios</a></li>
-            <li><a href="#nosotros"><span class="nav-icon"><i class="bi bi-people-fill"></i></span>Nosotros</a></li>
-            <li><a href="#contacto"><span class="nav-icon"><i class="bi bi-telephone-fill"></i></span>Contacto</a></li>
-            <li><a href="Card/Card.html"><span class="nav-icon"><i class="bi bi-file-earmark-text-fill"></i></span>Certificado</a></li>
-          </ul>
-        </nav>
+  <header class="main-header enhanced-header">
+    <div class="header-container enhanced-header-container">
+      <a href="#inicio" class="logo-link enhanced-logo-link">
+        <img src="Content/img/LOGO.png" alt="Logo Cigem" class="logo-img enhanced-logo-img" />
+      </a>
+      <nav class="nav-bar enhanced-nav-bar">
+        <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" tabindex="0">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="#inicio"><span class="nav-icon"><i class="bi bi-house-door-fill"></i></span>Inicio</a></li>
+          <li><a href="#servicios"><span class="nav-icon"><i class="bi bi-briefcase-fill"></i></span>Servicios</a></li>
+          <li><a href="#nosotros"><span class="nav-icon"><i class="bi bi-people-fill"></i></span>Nosotros</a></li>
+          <li><a href="#contacto"><span class="nav-icon"><i class="bi bi-telephone-fill"></i></span>Contacto</a></li>
+
+          <li><a href="Card/Card.html"><span class="nav-icon"><i class="bi bi-file-earmark-text-fill"></i></span>Certificado</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" id="inicio">
+    <div class="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-slide active">
+          <img src="Content/img/banner1.png" data-mobile="Content/img/movil1.jpeg" alt="Banner 1" />
+        </div>
+        <div class="carousel-slide">
+          <img src="Content/img/banner2.png" data-mobile="Content/img/movil2.jpeg" alt="Banner 2" />
+        </div>
+        <div class="carousel-slide">
+          <img src="Content/img/banner4.jpg" data-mobile="Content/img/movil3.jpeg" alt="Banner 3" />
+        </div>
+        <div class="carousel-slide">
+          <img src="Content/img/banner3.jpg" data-mobile="Content/img/movil4.jpeg" alt="Banner 4" />
+        </div>
+        <div class="carousel-slide">
+          <img src="Content/img/banner5.jpg" data-mobile="Content/img/movil5.jpg" alt="Banner 5" />
+        </div>
+        <div class="carousel-slide">
+          <img src="Content/img/banner6.jpg" data-mobile="Content/img/movil6.jpeg" alt="Banner 6" />
+        </div>
       </div>
-    </header>
+    </div>
+    <button class="carousel-control prev" onclick="changeSlide(-1)">&#10094;</button>
+    <button class="carousel-control next" onclick="changeSlide(1)">&#10095;</button>
+  </section>
 
-<section class="hero" id="inicio">
-  <div class="carousel">
-    <div class="carousel-inner">
-
-      <div class="carousel-slide active">
-        <img
-          src="Content/img/banner1.png"
-          data-mobile="Content/img/movil1.jpeg"
-          alt="Banner 1"
-        />
-      </div>
-
-      <div class="carousel-slide">
-        <img
-          src="Content/img/banner2.png"
-          data-mobile="Content/img/movil2.jpeg"
-          alt="Banner 2"
-        />
-      </div>
-
-      <div class="carousel-slide">
-        <img
-          src="Content/img/banner4.jpg"
-          data-mobile="Content/img/movil3.jpeg"
-          alt="Banner 3"
-        />
-      </div>
-
-
-      </div>
-         <div class="carousel-slide">
-        <img
-          data-mobile="Content/img/movil5.jpg"
-          alt="Banner 3"
-        />
-      </div>
-         <div class="carousel-slide">
-        <img
-          data-mobile="Content/img/movil6.jpeg"
-          alt="Banner 3"
-        />
-      </div>
-
+  <div class="hero-content improved-hero-content"
+    style="position:relative;max-width:100vw;z-index:10;margin:0 auto;top:0;left:0;transform:none;padding-top:32px;padding-bottom:18px;">
+    <div class="hero-text-bg">
+      <h1 class="hero-title">Centro de Investigación Gemológico de Medellín</h1>
+      <p class="hero-subtitle">Certificación de Esmeraldas con Excelencia y Transparencia</p>
+      <a href="#servicios" class="cta-button hero-cta">Conoce Nuestros Servicios</a>
     </div>
   </div>
-</section>
 
-        <button class="carousel-control prev" onclick="changeSlide(-1)">
-          &#10094;
-        </button>
-        <button class="carousel-control next" onclick="changeSlide(1)">
-          &#10095;
-        </button>
+  <section id="servicios">
+    <h2 class="section-title">Nuestros Servicios</h2>
+    <div class="services services--cards">
+      <article class="card">
+        <div class="card-media">
+          <img src="Content/img/Servicios2.jpg" alt="Análisis de piezas" />
+          <div class="card-overlay">
+            <a class="card-button" href="#servicio-analisis">Ver servicio</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Análisis de Piezas Montadas y Desmontadas</h3>
+
+          <p class="card-excerpt">Microscopía avanzada, espectroscopía y técnicas no destructivas para identificar naturaleza, tratamientos y calidad de la gema.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-media">
+          <img src="Content/img/Servicios3.jpg" alt="Tasaciones" />
+          <div class="card-overlay">
+            <a class="card-button" href="#servicio-tasaciones">Solicitar tasación</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Tasaciones y Valoraciones</h3>
+
+          <p class="card-excerpt">Tasaciones certificadas para seguros, ventas y herencias con informes profesionales y respaldo del mercado.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-media">
+          <img src="Content/img/Servicios1.jpg" alt="Certificación" />
+          <div class="card-overlay">
+            <a class="card-button" href="#servicio-certificacion">Más información</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Certificación de Origen y Tratamientos</h3>
+
+          <p class="card-excerpt">Análisis de inclusiones y composición para emitir opiniones sobre origen y detectar tratamientos que afectan valor.</p>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-media">
+          <img src="Content/img/Servicios4.jpeg" alt="Servicios profesionales" />
+          <div class="card-overlay">
+            <a class="card-button" href="#servicio-profesionales">Contactar</a>
+          </div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Servicios para Profesionales de la Joyería</h3>
+
+          <p class="card-excerpt">Clasificación de lotes, verificación rápida, control de calidad y asesoría especializada para el sector profesional.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="about" id="nosotros">
+    <div class="about-container">
+      <div class="about-image">
+        <img src="Content/img/LOGO.png" alt="CIGEM Laboratorio" loading="lazy" class="animated-logo"
+          style="background:#fffbe6; padding:18px; border-radius:16px; max-width:340px; margin:0 auto; box-shadow:0 4px 24px rgba(2,89,48,0.10);">
+
       </div>
-
-
-    </section>
-
-    <div class="hero-content improved-hero-content" style="position:relative;max-width:100vw;z-index:10;margin:0 auto;top:0;left:0;transform:none;padding-top:32px;padding-bottom:18px;">
-      <div class="hero-text-bg">
-        <h1 class="hero-title">Centro de Investigación Gemológico de Medellín</h1>
-        <p class="hero-subtitle">
-          Certificación de Esmeraldas con Excelencia y Transparencia
-        </p>
-        <a href="#servicios" class="cta-button hero-cta">Conoce Nuestros Servicios</a>
+      <div class="about-content">
+        <h2>Nosotros</h2>
+        <p>El Centro de Investigación Gemológico de Medellín es un laboratorio dedicado a la certificación de joyas, tanto naturales como artificiales, con más de 25 años de experiencia en el mercado. Nuestro equipo de expertos en gemología tiene la capacidad de proporcionar certificaciones rigorosas y precisas, asegurando que nuestros clientes obtengan la información y el respaldo que necesitan para sus transacciones. Desde el análisis de piezas hasta las tasaciones y certificaciones, nuestro laboratorio se centra en la calidad, la transparencia y la excelencia, para brindar al cliente el mejor servicio posible.</p>
+        <a href="#contacto" class="cta-button">Contáctanos</a>
       </div>
     </div>
+  </section>
 
-    <section id="servicios">
-      <h2 class="section-title">Nuestros Servicios</h2>
-
-      <div class="services services--cards">
-        <article class="card">
-          <div class="card-media">
-            <img src="Content/img/Servicios2.jpg" alt="Análisis de piezas" />
-            <div class="card-overlay">
-              <a class="card-button" href="#servicio-analisis">Ver servicio</a>
-            </div>
-          </div>
-          <div class="card-body">
-            <h3 class="card-title">
-              Análisis de Piezas Montadas y Desmontadas
-            </h3>
-            <p class="card-excerpt">
-              Microscopía avanzada, espectroscopía y técnicas no destructivas
-              para identificar naturaleza, tratamientos y calidad de la gema.
-            </p>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="card-media">
-            <img src="Content/img/Servicios3.jpg" alt="Tasaciones" />
-            <div class="card-overlay">
-              <a class="card-button" href="#servicio-tasaciones"
-                >Solicitar tasación</a
-              >
-            </div>
-          </div>
-          <div class="card-body">
-            <h3 class="card-title">Tasaciones y Valoraciones</h3>
-            <p class="card-excerpt">
-              Tasaciones certificadas para seguros, ventas y herencias con
-              informes profesionales y respaldo del mercado.
-            </p>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="card-media">
-            <img src="Content/img/Servicios1.jpg" alt="Certificación" />
-            <div class="card-overlay">
-              <a class="card-button" href="#servicio-certificacion"
-                >Más información</a
-              >
-            </div>
-          </div>
-          <div class="card-body">
-            <h3 class="card-title">Certificación de Origen y Tratamientos</h3>
-            <p class="card-excerpt">
-              Análisis de inclusiones y composición para emitir opiniones sobre
-              origen y detectar tratamientos que afectan valor.
-            </p>
-          </div>
-        </article>
-
-        <article class="card">
-          <div class="card-media">
-            <img
-              src="Content/img/Servicios4.jpeg"
-              alt="Servicios profesionales"
-            />
-            <div class="card-overlay">
-              <a class="card-button" href="#servicio-profesionales"
-                >Contactar</a
-              >
-            </div>
-          </div>
-          <div class="card-body">
-            <h3 class="card-title">
-              Servicios para Profesionales de la Joyería
-            </h3>
-            <p class="card-excerpt">
-              Clasificación de lotes, verificación rápida, control de calidad y
-              asesoría especializada para el sector profesional.
-            </p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="about" id="nosotros">
-      <div class="about-container">
-        <div class="about-image">
-          <img src="Content/img/LOGO.png" alt="CIGEM Laboratorio" loading="lazy" class="animated-logo" style="background:#fffbe6; padding:18px; border-radius:16px; max-width:340px; margin:0 auto; box-shadow:0 4px 24px rgba(2,89,48,0.10);">
-          <style>
-            .animated-logo {
-              animation: logo-fade-in-scale 1.8s cubic-bezier(0.23, 1, 0.32, 1) 0.2s both;
-              box-shadow: 0 8px 32px rgba(2,89,48,0.18), 0 1.5px 8px rgba(0,0,0,0.06);
-              transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.4s;
-            }
-            .animated-logo:hover {
-              transform: scale(1.045) rotate(-2deg) translateY(-4px);
-              box-shadow: 0 16px 48px rgba(2,89,48,0.22), 0 2px 12px rgba(0,0,0,0.10);
-            }
-            @keyframes logo-fade-in-scale {
-              0% {
-                opacity: 0;
-                transform: scale(0.7) rotate(-8deg) translateY(40px);
-                filter: blur(8px) brightness(1.2);
-              }
-              60% {
-                opacity: 1;
-                transform: scale(1.08) rotate(2deg) translateY(-8px);
-                filter: blur(0.5px) brightness(1.05);
-              }
-              85% {
-                transform: scale(0.98) rotate(-1deg) translateY(2px);
-                filter: blur(0px) brightness(1);
-              }
-              100% {
-                opacity: 1;
-                transform: scale(1) rotate(0deg) translateY(0);
-                filter: none;
-              }
-            }
-          </style>
+  <section id="contacto">
+    <h2 class="section-title">Contacto</h2>
+    <div class="contact-form">
+      <form action="#" method="post">
+        <div class="form-group">
+          <label for="name">Nombre:</label>
+          <input type="text" id="name" name="name" required />
         </div>
-        <div class="about-content">
-          <h2 class="section-title" style="color: var(--dorado); margin-bottom: 18px;">
-            Sobre CIGEM
-          </h2>
-          <p class="about-intro">
-            En CIGEM, fusionamos ciencia, tradición y ética para preservar la transparencia y excelencia en el mercado de piedras preciosas, con un enfoque especial en esmeraldas colombianas. Nuestro laboratorio está comprometido con la confianza y la innovación en cada análisis.
-          </p>
-          <div class="about-features">
-            <div class="feature">
-              <div class="feature-icon">
-                <i class="bi bi-patch-check-fill" style="font-size:2.2rem;color:var(--dorado);"></i>
-              </div>
-              <h3>Certificación Confiable</h3>
-              <p>Certificados reconocidos internacionalmente con análisis exhaustivos y rigurosos.</p>
-            </div>
-            <div class="feature">
-              <div class="feature-icon">
-                <i class="bi bi-gem" style="font-size:2.2rem;color:var(--dorado);"></i>
-              </div>
-              <h3>Experiencia Gemológica</h3>
-              <p>Equipo de gemólogos certificados con más de 20 años de experiencia en el sector.</p>
-            </div>
-            <div class="feature">
-              <div class="feature-icon">
-                <i class="bi bi-eye-fill" style="font-size:2.2rem;color:var(--dorado);"></i>
-              </div>
-              <h3>Transparencia Total</h3>
-              <p>Reportes detallados y accesibles que garantizan la confiabilidad de cada análisis.</p>
-            </div>
-            <div class="feature">
-              <div class="feature-icon">
-                <i class="bi bi-cpu-fill" style="font-size:2.2rem;color:var(--dorado);"></i>
-              </div>
-              <h3>Tecnología Avanzada</h3>
-              <p>Equipos especializados: microscopía, espectroscopía y análisis científicos de vanguardia.</p>
-            </div>
-          </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
         </div>
-      </div>
-    </section>
-
-    <footer id="contacto" class="footer">
-      <div class="footer-content">
-        <p>© 2025 CIGEM - Centro de Gemología</p>
-        <p>
-          +57 3502127792 Cl. 51 #51-17, La Candelaria oficina 506. | Todos los
-          derechos reservados
-        </p>
-
-        <div class="social-links">
-          <a href="https://wa.link/o998xn" target="_blank" aria-label="WhatsApp">
-            <i class="bi bi-whatsapp"></i>
-          </a>
-          <a href="https://www.instagram.com/cigem_/" target="_blank" aria-label="Instagram">
-            <i class="bi bi-instagram"></i>
-          </a>
+        <div class="form-group">
+          <label for="message">Mensaje:</label>
+          <textarea id="message" name="message" required></textarea>
         </div>
+        <div class="form-group">
+          <button type="submit">Enviar</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <p>&copy; 2023 Cigem. Todos los derechos reservados.</p>
+      <div class="footer-links">
+        <a href="#inicio">Inicio</a>
+        <a href="#servicios">Servicios</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#contacto">Contacto</a>
       </div>
-    </footer>
+    </div>
+  </footer>
+</body>
 
-    <!-- Mapa interactivo - Leaflet -->
-    <div
-      id="map"
-      class="site-map"
-      aria-label="Mapa de ubicación"
-      style="height: 380px"
-    ></div>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script>
-      const lat = 6.2506616;
-      const lng = -75.5683911;
-
-      const map = L.map("map", { scrollWheelZoom: false }).setView(
-        [lat, lng],
-        15
-      );
-
-      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        maxZoom: 19,
-        attribution: "&copy; OpenStreetMap contributors",
-      }).addTo(map);
-
-      const marker = L.marker([lat, lng])
-        .addTo(map)
-        .bindPopup("<strong>CIGEM</strong><br>Ubicación principal");
-
-      // URL para abrir en Google Maps (web o app según dispositivo)
-      const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-        lat + "," + lng
-      )}`;
-
-      // Cursor de puntero sobre el mapa
-      map.getContainer().style.cursor = "pointer";
-
-      // Abrir Google Maps al hacer clic en el mapa o en el marcador
-      map.on("click", () => window.open(mapsUrl, "_blank"));
-      marker.on("click", () => window.open(mapsUrl, "_blank"));
-
-      // abrir popup inicialmente
-      marker.openPopup();
-    </script>
-
-    <script>
-      let currentSlide = 0;
-      const slides = document.querySelectorAll(".carousel-slide");
-      const totalSlides = slides.length;
-
-      function showSlide(index) {
-        slides.forEach((slide) => slide.classList.remove("active"));
-        slides[index].classList.add("active");
-      }
-
-      function changeSlide(direction) {
-        currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
-        showSlide(currentSlide);
-      }
-
-      // Cambio automático cada 5 segundos
-      setInterval(() => changeSlide(1), 5000);
-
-      // Header nav responsive
-      const navToggle = document.getElementById("navToggle");
-      const navMenu = document.getElementById("navMenu");
-
-      navToggle.addEventListener("click", () => {
-        navMenu.classList.toggle("active");
-        navToggle.classList.toggle("open");
-      });
-
-      // Cierra el menú al hacer click fuera (opcional)
-      document.addEventListener("click", (e) => {
-        if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) {
-          navMenu.classList.remove("active");
-          navToggle.classList.remove("open");
-        }
-      });
-
-      //modo movil control
-      function actualizarSliderParaMovil() {
-        const esMovil = window.innerWidth <= 768;
-        const imagenes = document.querySelectorAll(".carousel-slide img");
-
-        imagenes.forEach((img) => {
-          const original = img.getAttribute("src");
-          const mobile = img.getAttribute("data-mobile");
-
-          if (esMovil && mobile) {
-            img.dataset.original = original;
-            img.src = mobile;
-          } else if (!esMovil && img.dataset.original) {
-            img.src = img.dataset.original;
-          }
-        });
-      }
-
-      actualizarSliderParaMovil();
-      window.addEventListener("resize", actualizarSliderParaMovil);
-    </script>
-  </body>
 </html>
