@@ -4,104 +4,344 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Credencial CIGEM Responsive 3D</title>
+  <meta name="theme-color" content="#012d23" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Jost:wght@400;500;600&family=Open+Sans:wght@400;600;700&display=swap" />
   <style>
     :root {
       --green-dark: #025930;
       --green-soft: #406956;
+      --green-night: #012d23;
+      --gold: #e7ce8f;
+      --gold-line: rgba(231, 206, 143, 0.35);
+      --ivory: #fffbe6;
       --text-light: #eafff3;
       --card-w: 53.98mm;
       --card-h: 85.6mm;
       --card-radius: 3.2mm;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-ui: 'Jost', 'Open Sans', system-ui, sans-serif;
+      --nav-h: 64px;
+      --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
     }
     * { box-sizing: border-box; }
     body {
       margin: 0;
       min-height: 100vh;
-      background: radial-gradient(circle at center, var(--green-soft), var(--green-dark));
+      background:
+        radial-gradient(circle at 50% 35%, rgba(64, 105, 86, 0.95) 0%, rgba(2, 89, 48, 0.9) 45%, var(--green-night) 100%);
+      background-attachment: fixed;
       font-family: "Open Sans", sans-serif;
       padding-bottom: 80px;
+      overflow-x: clip;
+      -webkit-font-smoothing: antialiased;
     }
+    :focus-visible {
+      outline: 2px solid var(--gold);
+      outline-offset: 3px;
+    }
+
+    /* ---------- Barra superior ---------- */
+    /* Nota: sin transform/filter/backdrop-filter para no afectar a los modales fijos que contiene */
     .navbar {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100vw;
-      background: rgba(2, 89, 48, 0.92);
+      width: 100%;
+      min-height: var(--nav-h);
+      background: rgba(1, 45, 35, 0.96);
       color: #fff;
       display: flex;
       align-items: center;
-      gap: 1em;
-      padding: 0.7em 2em 0.7em 1em;
+      gap: 0.75rem;
+      padding: 0.6rem clamp(0.75rem, 3vw, 2.5rem);
       z-index: 100;
-      box-shadow: 0 2px 12px rgba(2, 6, 23, 0.1);
-      font-size: 1.1em;
+      border-bottom: 1px solid var(--gold-line);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      font-family: var(--font-ui);
     }
     .navbar-link {
-      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      min-height: 44px;
+      padding: 0 0.9rem;
+      color: var(--ivory);
       text-decoration: none;
-      font-weight: 600;
-      background: rgba(255,255,255,.15);
-      padding: 4px 10px;
-      border-radius: 6px;
-      transition: color 0.2s;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 2px;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: color 0.25s var(--ease), background-color 0.25s var(--ease), border-color 0.25s var(--ease);
     }
     .navbar-link:hover {
-      color: #eafff3;
-      background: #038d4a;
+      color: var(--gold);
+      background: rgba(231, 206, 143, 0.08);
     }
     .navbar-title {
-      font-weight: 700;
-      letter-spacing: .5px;
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--gold);
+      padding-left: 0.9rem;
+      border-left: 1px solid var(--gold-line);
     }
+    .nav-btn {
+      font-family: var(--font-ui);
+      border: 1px solid var(--gold);
+    }
+    .nav-btn--primary {
+      margin-left: auto;
+      background: var(--gold);
+      color: var(--green-night);
+      font-weight: 600;
+    }
+    .nav-btn--primary:hover {
+      background: var(--ivory);
+      border-color: var(--ivory);
+      color: var(--green-night);
+    }
+    .nav-btn--ghost {
+      background: transparent;
+      color: var(--gold);
+    }
+    .nav-btn--ghost:hover {
+      background: var(--gold);
+      color: var(--green-night);
+    }
+    @media (max-width: 560px) {
+      .navbar-title { display: none; }
+      .navbar { gap: 0.4rem; }
+      .navbar-link { padding: 0 0.6rem; letter-spacing: 0.08em; font-size: 0.7rem; }
+    }
+    @media (max-width: 420px) {
+      .navbar { padding-left: 0.5rem; padding-right: 0.5rem; gap: 0.3rem; }
+      .navbar-link { padding: 0 0.55rem; letter-spacing: 0.02em; font-size: 0.8rem; text-transform: none; }
+    }
+    @media (max-width: 340px) {
+      .navbar-link { padding: 0 0.4rem; font-size: 0.74rem; }
+    }
+
+    /* ---------- Modales ---------- */
+    .modal {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(1, 20, 15, 0.86);
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    #certModal { z-index: 9998; }
+    #qrModal { z-index: 9999; }
+    .modal-panel {
+      position: relative;
+      width: 100%;
+      max-width: 400px;
+      margin: auto;
+      padding: 2.25rem 1.75rem 1.75rem;
+      background: #fff;
+      border-top: 2px solid var(--gold);
+      border-radius: 4px;
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.35);
+      font-family: var(--font-ui);
+      color: #1d2a25;
+      animation: modal-in 0.35s var(--ease) both;
+    }
+    @keyframes modal-in {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .modal-close {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 44px;
+      height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      border: none;
+      border-radius: 50%;
+      font-size: 1.6rem;
+      line-height: 1;
+      color: var(--green-dark);
+      cursor: pointer;
+      transition: background-color 0.25s var(--ease);
+    }
+    .modal-close:hover { background: rgba(231, 206, 143, 0.3); }
+    .modal-close:focus-visible { outline-color: var(--green-dark); }
+    .modal-title {
+      margin: 0 0 1.25rem;
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      font-weight: 600;
+      line-height: 1.15;
+      color: var(--green-night);
+    }
+    .modal-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #406956;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .modal-input {
+      width: 100%;
+      min-height: 50px;
+      padding: 0.75rem 1rem;
+      background: #fbf8f1;
+      border: 1px solid rgba(1, 45, 35, 0.18);
+      border-radius: 2px;
+      font-family: var(--font-ui);
+      font-size: 1rem;
+      transition: border-color 0.25s var(--ease), box-shadow 0.25s var(--ease), background-color 0.25s var(--ease);
+    }
+    .modal-input:focus {
+      outline: none;
+      background: #fff;
+      border-color: var(--green-dark);
+      box-shadow: 0 0 0 3px rgba(231, 206, 143, 0.5);
+    }
+    .modal-error {
+      color: #b91c1c;
+      font-size: 0.85rem;
+      margin-top: 0.6rem;
+    }
+    .modal-submit {
+      width: 100%;
+      min-height: 50px;
+      margin-top: 1.25rem;
+      background: var(--green-dark);
+      color: var(--ivory);
+      font-family: var(--font-ui);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      border: 1px solid var(--green-dark);
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background-color 0.25s var(--ease), color 0.25s var(--ease);
+    }
+    .modal-submit:hover { background: var(--green-night); color: var(--gold); }
+    .modal-submit:focus-visible { outline-color: var(--green-dark); }
+    .modal-submit:disabled { opacity: 0.6; cursor: progress; }
+    #reader {
+      width: 100%;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+    .qr-success {
+      text-align: center;
+      margin-top: 1.25rem;
+    }
+    .qr-success-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 64px;
+      height: 64px;
+      margin-bottom: 0.75rem;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      font-size: 1.8rem;
+      color: var(--green-dark);
+    }
+    .qr-success-icon i { font-style: normal; }
+    .qr-success-text {
+      color: var(--green-dark);
+      font-weight: 600;
+      font-size: 1.05rem;
+    }
+    .toast {
+      position: fixed;
+      z-index: 10000;
+      left: 50%;
+      top: 24px;
+      transform: translateX(-50%);
+      max-width: calc(100% - 2rem);
+      padding: 0.85rem 1.5rem;
+      background: var(--green-night);
+      color: var(--gold);
+      border: 1px solid var(--gold-line);
+      border-radius: 2px;
+      font-family: var(--font-ui);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+    }
+
+    /* ---------- Pie ---------- */
     .footer-bar {
       position: fixed;
       bottom: 0;
       left: 0;
-      width: 100vw;
-      background: rgba(2, 89, 48, 0.92);
+      width: 100%;
+      background: rgba(1, 45, 35, 0.96);
       color: #fff;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 0.7em 0;
-      font-size: 1.05em;
+      padding: 0.85em 0;
       z-index: 200;
-      box-shadow: 0 -2px 12px rgba(2, 6, 23, 0.1);
+      border-top: 1px solid var(--gold-line);
+      box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.2);
     }
     .footer-content {
       display: flex;
       align-items: center;
+      justify-content: center;
       gap: 12px;
       max-width: 1200px;
-      width: 100vw;
+      width: 100%;
       padding: 0 2em;
       box-sizing: border-box;
     }
     .footer-text {
-      color: #eafff3;
-      font-size: 1em;
+      color: rgba(255, 251, 230, 0.8);
+      font-family: var(--font-ui);
+      font-size: 0.72rem;
       font-weight: 500;
-      letter-spacing: 0.1px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
       line-height: 1.4;
     }
+
+    /* ---------- Escenario ---------- */
     .stage {
       margin-top: 80px;
       min-height: calc(100vh - 80px);
       display: flex;
       justify-content: center;
-      gap: 20px;
-      padding: 20px;
+      align-items: center;
+      gap: clamp(20px, 3vw, 40px);
+      padding: clamp(20px, 3vw, 40px);
       box-sizing: border-box;
       overflow: hidden;
     }
     aside.card {
-      max-width: 420px;
+      max-width: 400px;
       width: 100%;
-      background: linear-gradient(135deg, var(--green-dark), var(--green-soft));
+      background: linear-gradient(160deg, rgba(1, 45, 35, 0.72), rgba(64, 105, 86, 0.5));
       color: var(--text-light);
-      border-radius: 20px;
-      padding: 20px;
-      box-shadow: 0 12px 30px rgba(2,89,48,.25);
+      border: 1px solid var(--gold-line);
+      border-radius: 4px;
+      padding: 24px;
+      box-shadow: 0 24px 50px rgba(0, 0, 0, 0.25);
       display: flex;
       flex-direction: column;
       gap: 10px;
@@ -113,14 +353,26 @@
     }
     .badge, li {
       display: flex;
-      gap: 10px;
+      gap: 12px;
       align-items: center;
-      background: rgba(255,255,255,.12);
-      padding: 10px 12px;
-      border-radius: 10px;
-      font-size: 0.95rem;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(231, 206, 143, 0.14);
+      padding: 11px 14px;
+      border-radius: 2px;
+      font-size: 0.92rem;
       font-weight: 600;
+      transition: background-color 0.25s var(--ease), border-color 0.25s var(--ease);
     }
+    .badge {
+      background: rgba(231, 206, 143, 0.1);
+      border-color: rgba(231, 206, 143, 0.3);
+      color: var(--ivory);
+    }
+    li:hover, .badge:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(231, 206, 143, 0.4);
+    }
+    .badge .icon circle, .badge .icon path { stroke: var(--gold); }
     ul {
       list-style: none;
       padding: 0;
@@ -142,7 +394,7 @@
       position: relative;
       overflow: hidden;
       background: linear-gradient(180deg, #d2d6da 0%, #edf2f5 70%, #ffffff 100%);
-      box-shadow: 0 18px 40px rgba(2, 6, 23, 0.65), 0 6px 14px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 18px 40px rgba(2, 6, 23, 0.65), 0 6px 14px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(231, 206, 143, 0.35);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -156,14 +408,13 @@
       .stage {
         flex-direction: column;
         align-items: stretch;
-        gap: 10px;
-        padding: 8px;
+        gap: 12px;
+        padding: 12px;
       }
       aside.card {
-        max-width: 100vw;
-        width: 100vw;
-        border-radius: 14px;
-        padding: 12px 6px;
+        max-width: 100%;
+        width: 100%;
+        padding: 14px 12px;
         margin: 0 auto;
       }
       #card {
@@ -191,7 +442,7 @@
     }
 
     #card:hover {
-      box-shadow: 0 28px 60px rgba(2, 6, 23, 0.75), 0 10px 22px rgba(0, 0, 0, 0.45);
+      box-shadow: 0 28px 60px rgba(2, 6, 23, 0.75), 0 10px 22px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(231, 206, 143, 0.55);
     }
     .content {
       position: relative;
@@ -291,49 +542,53 @@
       }
     }
     @media (max-width: 600px) {
+      aside.card { width: 100%; }
       .badge, li {
         font-size: 0.85rem;
-        padding: 8px 10px;
+        padding: 9px 11px;
       }
-      .navbar {
-        font-size: 0.95rem;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
       }
     }
   </style>
 </head>
 <body>
-  <nav class="navbar">
+  <nav class="navbar" aria-label="Navegación de credencial">
     <a href="../index.html" class="navbar-link">⟵ Inicio</a>
     <span class="navbar-title">Credencial</span>
-    <button id="btnValidarNumero" class="navbar-link" style="margin-left:auto; background:#16a34a; color:#fff; font-weight:700; border-radius:8px; padding:7px 16px; font-size:1em; display:inline-block; border:none; cursor:pointer;">Validar Certificado</button>
-    <button id="btnScanQR" class="navbar-link" style="background:#025930; color:#fff; font-weight:700; border-radius:8px; padding:7px 16px; font-size:1em; display:inline-block; border:none; cursor:pointer;">Escanear QR</button>
+    <button id="btnValidarNumero" type="button" class="navbar-link nav-btn nav-btn--primary">Validar Certificado</button>
+    <button id="btnScanQR" type="button" class="navbar-link nav-btn nav-btn--ghost">Escanear QR</button>
     <!-- Modal para digitar el número de certificado -->
-    <div id="certModal" style="display:none; position:fixed; z-index:9998; left:0; top:0; width:100vw; height:100vh; background:rgba(15,23,42,0.92); align-items:center; justify-content:center;">
-      <div style="background:#fff; border-radius:18px; padding:24px 18px 18px 18px; max-width:370px; width:95vw; margin:auto; box-shadow:0 8px 32px rgba(2,89,48,0.18); position:relative;">
-        <button id="closeCertModal" style="position:absolute; top:10px; right:10px; background:none; border:none; font-size:1.7em; color:#025930; cursor:pointer;">&times;</button>
-        <h3 style="color:#025930; margin-bottom:10px;">Validar certificado</h3>
-        <label for="certInput" style="display:block; color:#406956; font-weight:600; margin-bottom:6px; font-size:0.95em;">Ingresa el número de certificado</label>
-        <input id="certInput" type="text" placeholder="Ej: 1" style="width:100%; padding:10px 12px; border:1px solid #cbd5e1; border-radius:8px; font-size:1em; box-sizing:border-box;" />
-        <div id="certError" style="display:none; color:#b91c1c; font-size:0.85em; margin-top:8px;"></div>
-        <button id="btnBuscarCert" style="margin-top:14px; width:100%; background:#16a34a; color:#fff; font-weight:700; border:none; border-radius:8px; padding:10px 0; font-size:1em; cursor:pointer;">Buscar</button>
+    <div id="certModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="certModalTitle" style="display:none;">
+      <div class="modal-panel">
+        <button id="closeCertModal" type="button" class="modal-close" aria-label="Cerrar">&times;</button>
+        <h3 id="certModalTitle" class="modal-title">Validar certificado</h3>
+        <label for="certInput" class="modal-label">Ingresa el número de certificado</label>
+        <input id="certInput" type="text" class="modal-input" placeholder="Ej: 1" inputmode="numeric" autocomplete="off" />
+        <div id="certError" class="modal-error" role="alert" style="display:none;"></div>
+        <button id="btnBuscarCert" type="button" class="modal-submit">Buscar</button>
       </div>
     </div>
     <!-- Modal para escanear QR -->
-    <div id="qrModal" style="display:none; position:fixed; z-index:9999; left:0; top:0; width:100vw; height:100vh; background:rgba(15,23,42,0.92); align-items:center; justify-content:center;">
-      <div style="background:#fff; border-radius:18px; padding:24px 18px 18px 18px; max-width:370px; width:95vw; margin:auto; box-shadow:0 8px 32px rgba(2,89,48,0.18); position:relative;">
-        <button id="closeQRModal" style="position:absolute; top:10px; right:10px; background:none; border:none; font-size:1.7em; color:#025930; cursor:pointer;">&times;</button>
-        <h3 style="color:#025930; margin-bottom:10px;">Escanear código QR</h3>
-        <div id="reader" style="width:100%; max-width:320px; margin:0 auto;"></div>
-              <div id="qrSuccess" style="display:none; text-align:center; margin-top:18px;">
-                <div style="font-size:2.2em; color:#16a34a; margin-bottom:8px;">
-                  <i style="font-style:normal;">✔</i>
+    <div id="qrModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="qrModalTitle" style="display:none;">
+      <div class="modal-panel">
+        <button id="closeQRModal" type="button" class="modal-close" aria-label="Cerrar">&times;</button>
+        <h3 id="qrModalTitle" class="modal-title">Escanear código QR</h3>
+        <div id="reader"></div>
+              <div id="qrSuccess" class="qr-success" style="display:none;">
+                <div class="qr-success-icon">
+                  <i>✔</i>
                 </div>
-                <div style="color:#025930; font-weight:700; font-size:1.1em;">¡QR válido detectado!</div>
+                <div class="qr-success-text">¡QR válido detectado!</div>
               </div>
       </div>
     </div>
     <!-- Toast de validación de certificados -->
-    <div id="certToast" style="display:none; position:fixed; z-index:10000; left:50%; top:24px; transform:translateX(-50%); background:#16a34a; color:#fff; font-weight:700; padding:12px 22px; border-radius:10px; box-shadow:0 8px 24px rgba(2,89,48,0.3);"></div>
+    <div id="certToast" class="toast" role="status" aria-live="polite" style="display:none;"></div>
     <!-- Librería QR -->
     <script src="https://unpkg.com/html5-qrcode"></script>
   </nav>
