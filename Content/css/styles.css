@@ -1432,6 +1432,35 @@ footer.footer :focus-visible {
   }
 }
 
+.whatsapp-float {
+  position: fixed;
+  right: max(1rem, env(safe-area-inset-right));
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  z-index: 110;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 52px;
+  padding: 0.65rem 1rem;
+  border-radius: 999px;
+  background: #087b3b;
+  color: #fff;
+  box-shadow: 0 4px 16px rgba(1, 45, 35, 0.25);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.2s var(--ease);
+}
+
+.whatsapp-float .bi {
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.whatsapp-float:hover {
+  background: #05642f;
+}
+
 /* ---------- 12. Revelado al hacer scroll (activado por JS) ---------- */
 .js-reveal .section-header,
 .js-reveal .card,
